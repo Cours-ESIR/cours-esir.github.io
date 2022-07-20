@@ -108,7 +108,7 @@
         }
     }
 
-    window.onhashchange = load
+    
 
     function load() {
         let hash = decodeURI(document.location.hash.substring(1))
@@ -125,6 +125,9 @@
         
         update_sidebar()
     }
+	
+window.onhashchange = load
+ 
 </script>
         <script type="module">    
             await load()
