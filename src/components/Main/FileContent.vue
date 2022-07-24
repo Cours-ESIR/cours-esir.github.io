@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { ref, onUpdated } from 'vue';
-import { page } from "@/scripts/format.js";
+import { page } from "@/services/format.js";
 
 import GithubService from '@/services/GithubService';
 

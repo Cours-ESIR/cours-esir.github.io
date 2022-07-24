@@ -10,8 +10,6 @@
     "type-check": "vue-tsc --noEmit"
   },
   "dependencies": {
-    "@types/marked": "^4.0.3",
-    "marked": "^4.0.18",
     "vue": "^3.2.37",
     "vue-router": "^4.0.16"
   },
