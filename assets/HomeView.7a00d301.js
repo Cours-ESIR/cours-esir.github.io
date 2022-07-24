@@ -1,0 +1,1 @@
+import{F as a}from"./FileContent.20600a38.js";import{d as o,r as t,o as n,a as r,c as s}from"./index.eb2cd1ec.js";import"./GithubService.c7390ac9.js";const i=o({__name:"HomeView",setup(p){const e=t("");return n(async()=>{e.value="/README.md"}),(c,m)=>(r(),s(a,{path:e.value},null,8,["path"]))}});export{i as default};
