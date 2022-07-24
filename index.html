@@ -1,135 +1,27 @@
 <!DOCTYPE html>
-<html lang="FR">
-<head>
-    	<title>ESIR - Cours</title>
-    	<link rel="icon" href="./esir.svg">
-    
-    	<meta name="viewport" content="width=device-width, initial-scale=1">
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="/esir.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cours - ESIR</title>
 
-	    <meta name="description"  content="">
-
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-
-        <script src="./format.js"></script>
-        <link href="./style.css" rel="stylesheet" />
-        <!-- Font Awesome -->
-        <link rel="stylesheet" href="/libs/fontawesome/css/all.min.css">
-        <!-- Prism -->
-        <script src="/libs/prism.js"></script>
-        <link href="/libs/prism.css" rel="stylesheet" />
-        <!-- Marked -->
-        <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-        <!-- Katex -->
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.css" integrity="sha384-1IGr2Yb8xuHjwTG+WoGjj2+I/a/N6z0gDD5YIGCQxywPROOKc3+orbn/R7arWQxD" crossorigin="anonymous">
-        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.js" integrity="sha384-I2b1Pcl48X93GxEkGkaMo1hrd6n+IX8H2wgSsMimGbkZoGTve/87h1FjaDNvlpQi" crossorigin="anonymous"></script>
-    </head>
-
-    <body>
-        <div id="navbar" class="no-print">
-            <i id="sidebar_button" class="fa-solid fa-bars"></i>
-            <i onclick="edit()" class="fa-solid fa-pen-to-square"></i>
-            <i onclick="print()" class="fa-solid fa-print"></i>
-            <i onclick="share()" class="fa-solid fa-share"></i>
-        </div>
-
-        <div id="sidebar" class="no-print">
-            <a href="javascript:retour()">Retour</a>
-            <div id="links"></div>
-        </div>
-
-        <div id="cours"></div>
-
-        <textarea id="copy" style="position: absolute; top:-200%;"></textarea>
-
-<script>
-    let path
-    let sidebar_state = true
-    let url
-    
-    function edit() {
-    	window.open("https://github.dev/Cours-ESIR/Cours/Pr%C3%A9pa%20L1","_blank")
-    }
-    
-    function switch_menu() {
-    	let sidebar = document.querySelector("#sidebar")
-        if (sidebar_state) {
-            sidebar.style.transform = "translateY( calc(-50vh - 68px - 16px * 2 ) ) translateX(-50%)"
-            sidebar_state = false
-        } else {
-            sidebar.style.transform = "translateY(0%) translateX(-50%)"
-            sidebar_state = true
-        }
-    }
-	
-    switch_menu()
-    document.querySelector("#sidebar_button").onclick = () => { switch_menu() }
-    
-    function share() {
-        window.navigator.share({
-  		title: document.title,
-  		url: url
-	});
-    }
-
-    function retour() {
-        document.location.hash = path.split("/").slice(0,-1).join("/")
-    }
-
-    async function load_file(file) {
-        let req = await fetch("https://raw.githubusercontent.com/Cours-ESIR/Cours/main" + path + "/" + file)
-        let data = await req.text()
-        document.querySelector("#cours").innerHTML = page(data)
-    }
-
-    async function update_sidebar() {    
-        document.querySelector("#sidebar #links").innerHTML = ""  
-        let api = await fetch("https://api.github.com/repos/Cours-ESIR/Cours/contents" + path)
-        let data = await api.json()
-        
-        let already_added = []
-
-        for ( let item of data){
-            let name =  item.name
-
-            if ( name.toUpperCase() == "README.MD" ){
-		url = location.origin + "#" + path
-		document.title = "ESIR - Cours | " + path
-                load_file(name)
-                continue
-            }
-
-            let a = document.createElement("a")
-            a.href = "#" + path + "/" + name
-            a.innerText = name
-
-            document.querySelector("#sidebar #links").appendChild(a)
-
-            already_added.push( a.innerText )
-        }
-    }
-
+    <!-- Prism -->
+    <script src="/src/scripts/prism.js"></script>
     
 
-    function load() {
-        let hash = decodeURI(document.location.hash.substring(1))
-        
-	path = hash
-        
-	if ( hash.split(".md").length == 2 ) {
-            	let filename = path.split("/").slice(-1)[0]
-	    	path = path.split("/").slice(0,-1).join("/")
-		url = location.origin + "#" + path + "/" + filename
-		document.title = "ESIR - Cours | " + filename
-		load_file(filename)
-        }
-        
-        update_sidebar()
-    }
-	
-window.onhashchange = load
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <!-- Katex -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.css" integrity="sha384-1IGr2Yb8xuHjwTG+WoGjj2+I/a/N6z0gDD5YIGCQxywPROOKc3+orbn/R7arWQxD" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.js" integrity="sha384-I2b1Pcl48X93GxEkGkaMo1hrd6n+IX8H2wgSsMimGbkZoGTve/87h1FjaDNvlpQi" crossorigin="anonymous"></script>
 
-	
-load()
-</script>
-</body>
+
+
+    <script type="module" crossorigin src="/assets/index.1ff38949.js"></script>
+    <link rel="stylesheet" href="/assets/index.0995c3c8.css">
+  </head>
+  <body>
+    <div id="app"></div>
+    
+  </body>
 </html>
