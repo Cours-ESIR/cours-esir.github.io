@@ -6,6 +6,9 @@
 	--blue:#5A8DEE;
 	--green:#39DA8A;
 	--red:#F26061;	
+	
+	--vh: 100vh;
+	--vw: 100vw;
 }
 
 @media (prefers-color-scheme: light){
@@ -44,8 +47,8 @@ html,body, a,a:hover, a:visited, a:link {
 
 html,body {
     background-color: var(--background);
-	height:-webkit-fill-available;
-	width:-webkit-fill-available;
+	height:var(--vh);
+	width: var(--vw);
 	overflow: hidden;
 }
 
