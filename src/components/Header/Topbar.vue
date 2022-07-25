@@ -4,7 +4,7 @@ import router from '@/router/Router.vue';
 const path = usePath();
 
 function change_path(){
-	if ( router.path() == "/viewer"){
+	if ( router.data().path == "/viewer"){
         router.set("/lessons")
 	}
 	else{

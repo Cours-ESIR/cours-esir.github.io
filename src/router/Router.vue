@@ -1,5 +1,7 @@
 <script lang="ts">
 
+import { ref } from 'vue'
+
 import AboutView from '@/views/AboutView.vue'
 import SearchView from '@/views/SearchView.vue'
 import EditView from '@/views/EditView.vue'
@@ -46,38 +48,33 @@ export default {
 	set(route){
 		document.location.hash = "#" + route
 	},
-	path(){
-		return window.location.hash.slice(1).split("?")[0]
-	},
-	
-  data() {
-    return {
-		currentPath : window.location.hash.substring(1),
-		find : (route) => {
-			route = route.split("?")[0]
-			for (let item of routes){
-				if (route === item.path) {
-					return item.component
+  	data() {
+    	return {
+			path : window.location.hash.substring(1).split("?")[0],
+			find : (route) => {
+				for (let item of routes){
+					if (route === item.path) {
+						return item.component
+					}
 				}
+				return NotFound
 			}
-			return NotFound
-		}
-    }
-  },
-  computed: {
-    currentView() {
-    	return this.find(this.currentPath || '/')
-    }
-  },
-  mounted() {
-    window.addEventListener('hashchange', () => {
-		this.currentPath = window.location.hash.substring(1)
-	})
-  }
+    	}
+  	},
+  	computed: {
+    	currentView() {
+    		return this.find(this.path || '/')
+    	}
+  	},
+  	mounted() {
+    	window.addEventListener('hashchange', () => {
+			this.path = window.location.hash.substring(1).split("?")[0]
+		})
+  	}
 }
 
 </script>
 
 <template>
-	<component  :is="currentView"/>
+	<component :is="currentView"/>
 </template>
