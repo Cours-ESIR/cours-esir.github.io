@@ -44,7 +44,11 @@ export default class GithubService {
     }
 
     public static async fetch(path: string): Promise<any> {
-        let data = await fetch(this.GITHUB_API_URL + path);
+        let data = await fetch(this.GITHUB_API_URL + path, {
+            headers: {
+                Authorization: "Basic OWM4ZDcxYTc2MTM4ZjYxMmI4NzQ6N2U5MjIwOGMxZDY1MzRiZGMxZmVhNTZjMTZhMGY4MWY4ZGE4ZDI5NA=="
+            }
+        });
         return await data.json();
     }
 
