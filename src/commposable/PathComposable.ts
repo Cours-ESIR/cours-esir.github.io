@@ -4,7 +4,7 @@ const path = reactive<string[]>([]);
 
 export default function() {
     const getFullPath = () => {
-        return path.join("/");
+        return "/" + path.join("/");
     }
 
     return {
