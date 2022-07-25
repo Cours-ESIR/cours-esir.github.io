@@ -6,7 +6,7 @@ const file_name = ref("");
 const folder_path = ref("");
 
 onMounted(async () => {
-    let url = new URLSearchParams(window.location.search);
+    let url = new URLSearchParams( location.hash.split("?")[1] );
     let folder = url.get('folder');
     let file = url.get('file');
     if(file === null || folder === null) return;

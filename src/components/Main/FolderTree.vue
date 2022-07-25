@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { ref,onMounted } from 'vue';
-import router from '@/router';
+import router from '@/router/Router.vue';
 import usePath from '@/commposable/PathComposable';
 
 import GithubService from '@/services/GithubService';
@@ -24,15 +24,13 @@ function getIcon(kind): string {
 
 function changepath(child) {
     if(child.kind === "file") {
-        router.push({
-            path: '/viewer',
-            query: {
-                folder: path.getFullPath(),
-                file: child.name + '.md',
-            }
-        });
+        router.set(
+            "/viewer"
+            + "?folder=" + path.getFullPath()
+            + "&file=" + child.name + '.md'
+        )
         return;
-    }
+    };
     path.path.push(child.name);
     pushChild();
 }

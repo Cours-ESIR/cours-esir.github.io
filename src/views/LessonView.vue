@@ -2,7 +2,9 @@
 
 import FolderTree from '@/components/Main/FolderTree.vue';
 import usePath from '@/commposable/PathComposable';
+
 const path = usePath();
+
 </script>
 
 <template>

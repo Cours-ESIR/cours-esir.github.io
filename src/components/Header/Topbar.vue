@@ -1,14 +1,11 @@
 <script lang="ts" setup>
 import usePath from "@/commposable/PathComposable";
-import router from '@/router';
-
+import router from '@/router/Router.vue';
 const path = usePath();
 
 function change_path(){
-	if (document.location.pathname == "/viewer"){
-		router.push({
-            path: "/lessons",
-		})
+	if ( router.path() == "/viewer"){
+        router.set("/lessons")
 	}
 	else{
 		path.path.pop()

@@ -4,6 +4,8 @@ import Menu from '@/components/Navigation/Menu.vue';
 import Topbar from '@/components/Header/Topbar.vue';
 import type { RouteRecordName } from 'vue-router';
 
+import Router from './router/Router.vue';
+
 const items = ref([
 	{
 		title: 'Accueil',
@@ -39,13 +41,15 @@ function isRequired(routeName: string|RouteRecordName|null|undefined): boolean {
 	let menus = ['lessons', 'edit', 'viewer'];
 	return menus.includes(routeName);
 }
+
+
 </script>
 
 <template>
 	<div id="content">
-		<Topbar id="topbar" v-if="isRequired($route.name)" class="no-print" />
+		<Topbar id="topbar" class="no-print" />
 		<div id="router_par">
-			<RouterView id="router"  />
+			<Router id="router"/>
 		</div>
 	</div>
 	<Menu class="no-print" id="menu" :menu-items="items"></Menu>
