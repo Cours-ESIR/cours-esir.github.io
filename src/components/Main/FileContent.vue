@@ -10,10 +10,13 @@ const props = defineProps<{
 
 const content = ref('');
 
+let called = false
+
 onUpdated(async () => {
-    if(props.path !== '') {
+    if(props.path !== '' && called == false) {
         let raw = await GithubService.fetchFileContent(props.path);
         content.value = page(raw);
+        called = true
     }
 });
 </script>
