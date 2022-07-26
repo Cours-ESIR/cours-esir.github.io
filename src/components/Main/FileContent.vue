@@ -12,7 +12,7 @@ const content = ref('');
 
 onUpdated(async () => {
     if(props.path !== '') {
-        let raw = await GithubService.getFileContent(props.path);
+        let raw = await GithubService.fetchFileContent(props.path);
         content.value = page(raw);
     }
 });

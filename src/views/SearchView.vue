@@ -1,9 +1,10 @@
 <script lang="ts" setup>
-import { onMounted, ref } from 'vue';
-import GithubService from '@/services/GithubService';
+import { ref } from 'vue';
+import useGithub from '@/composable/GithubComposable';
 
-const input         = ref("");
-const files         = ref<string[]>([]);
+const github = useGithub();
+
+const input         = ref('');
 const list_filtered = ref<string[]>([]);
 
 function filter() {
@@ -12,17 +13,12 @@ function filter() {
 
     if(text.length === 0) return;
 
-    for (let file of files.value){
+    for (let file of github.files){
         if (file.toUpperCase().includes(text)) {
             list_filtered.value.push(file);
         }
     }
 }
-
-onMounted(async () => {
-    files.value = await GithubService.getAllFiles();
-});
-
 </script>
 
 <template>

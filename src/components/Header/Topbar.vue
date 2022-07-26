@@ -1,14 +1,15 @@
 <script lang="ts" setup>
-import usePath from "@/commposable/PathComposable";
-import router from '@/router/Router.vue';
-const path = usePath();
+import router from '@/router/index';
+import usePath from '@/composable/PathComposable';
+const globalPath = usePath();
 
-function change_path(){
-	if ( router.data().path == "/viewer"){
-        router.set("/lessons")
-	}
-	else{
-		path.path.pop()
+function back(route: string) {
+	if(route === '/viewer') {
+        router.push({
+			path: '/lessons'
+		});
+	} else {
+		globalPath.path.pop();
 	}
 }
 
@@ -22,17 +23,17 @@ function share() {
 
 <template>
 	<div class="topbar">
-		<div @click="change_path()" class="button">
+		<div @click="back($route.path)" class="button">
 			<i class="gg-chevron-left"></i>
 		</div>
-		<template v-for="part of path.path">
+		<template v-for="part of globalPath.path">
 			<!-- préparer le chemin pour pouvoir clicker sur un élément ? -->
 			<!-- @click="/* get the path to go to */" -->
 			<!-- <span>{{ part }}</span> -->
 		</template>
 		
 		<div class="path">
-			{{ path.getFullPath() }}
+			{{ globalPath.getFullPath() }}
 		</div>
 		<div onclick="window.print()" class="button">
 			<i class="gg-printer"></i>

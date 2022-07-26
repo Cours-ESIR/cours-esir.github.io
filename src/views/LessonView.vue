@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 
 import FolderTree from '@/components/Main/FolderTree.vue';
-import usePath from '@/commposable/PathComposable';
+import usePath from '@/composable/PathComposable';
 
 const path = usePath();
 

@@ -1,46 +1,39 @@
 <script lang="ts" setup>
-import { ref,onMounted } from 'vue';
-import router from '@/router/Router.vue';
-import usePath from '@/commposable/PathComposable';
+import { ref } from 'vue';
+import router from '@/router/index';
 
-import GithubService from '@/services/GithubService';
+import usePath from '@/composable/PathComposable';
+import useGithub from '@/composable/GithubComposable';
+import { ItemKind, type ItemData, type TreeItem } from '@/types/Tree';
 
-const path = usePath();
+const globalPath = usePath();
+const github = useGithub();
+const currentNode = ref<TreeItem>(github.getNodeFromPath(globalPath.path));
 
-const currentNode = ref([]);
-
-async function pushChild(): void {
-    currentNode.value = await GithubService.getAllFilesPath( path.getFullPath() );
+function getIcon(kind: ItemKind): string {
+    return (kind === ItemKind.folder) ? 'gg-folder' : 'gg-file';
 }
 
-onMounted( ()=> {
-    pushChild();   
-}
-);
-
-function getIcon(kind): string {
-    return (kind === "folder") ? 'gg-folder' : 'gg-file';
-}
-
-function changepath(child) {
-    if(child.kind === "file") {
-        router.set(
-            "/viewer"
-            + "?folder=" + path.getFullPath()
-            + "&file=" + child.name + '.md'
-        )
+function push(child: ItemData) {
+    if(child.kind === ItemKind.file) {
+        router.push({
+            path: '/viewer',
+            query: {
+                folder: globalPath.getFullPath(),
+                file: child.name + '.md'
+            },
+        });
         return;
-    };
-    path.path.push(child.name);
-    pushChild();
+    }
+    globalPath.path.push(child.name);
+    currentNode.value = github.getNodeFromPath(globalPath.path);
 }
-
 </script>
 
 <template>
     <main class="folder-grid">
-        <template v-for="child in currentNode">
-            <div @click="changepath(child)" :class="child.kind">
+        <template v-for="child in currentNode.children">
+            <div @click="push(child)" :class="ItemKind[child.kind]">
                 <i :class="getIcon(child.kind)"></i>
                 <p class="node-text">{{ child.name }}</p>
             </div>
@@ -49,14 +42,6 @@ function changepath(child) {
 </template>
 
 <style scoped>
-
-.return {
-    display: grid;
-    place-items: center;
-    height:50px;
-    width:50px;
-
-}
 
 .node-text{
     margin:0;

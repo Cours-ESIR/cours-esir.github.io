@@ -1,9 +1,8 @@
 <script lang="ts" setup>
-import { ref,onMounted } from 'vue';
+import { ref } from 'vue';
+import { RouterView } from 'vue-router';
 import Menu from '@/components/Navigation/Menu.vue';
 import Topbar from '@/components/Header/Topbar.vue';
-
-import Router from './router/Router.vue';
 
 const items = ref([
 	{
@@ -33,28 +32,17 @@ const items = ref([
 	}
 ]);
 
-let routeName = ref()
-
-function isRequired(routeName): boolean {
+function isRequired(routeName: string): boolean {
 	let menus = ['/lessons', '/edit', '/viewer'];
 	return menus.includes(routeName);
 }
-
-window.addEventListener("hashchange", () => {
-	routeName.value = Router.data().path
-})
-
-onMounted(() => {
-	routeName.value = Router.data().path
-})
-
 </script>
 
 <template>
 	<div id="content">
-		<Topbar id="topbar" v-if="isRequired(routeName)" class="no-print" />
+		<Topbar id="topbar" v-if="isRequired($route.path)" class="no-print" />
 		<div id="router_par">
-			<Router id="router"/>
+			<RouterView id="router" :key="$route.hash"/>
 		</div>
 	</div>
 	<Menu class="no-print" id="menu" :menu-items="items"></Menu>

@@ -1,6 +1,4 @@
 <script lang="ts" setup>
-
-
 type MenuItem = {
 	title: string;
 	route: string;
@@ -13,15 +11,10 @@ defineProps<{
 
 </script>
 
-<script lang="ts">
-	import router from "@/router/Router.vue"
-
-</script>
-
 <template>
 	<nav class="menu-container">
 	<template v-for="item of menuItems">
-		<a @click="router.set(item.route)" class="menu-item">
+		<a @click="$router.push(item.route)" class="menu-item">
 			<div class="icon-container"><i :class="item.class"></i></div>
 			<p class="item-title">{{ item.title }}</p>
 		</a>

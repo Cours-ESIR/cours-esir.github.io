@@ -1,19 +1,23 @@
-import { createApp, ref } from 'vue';
+import { createApp } from 'vue';
+import router from './router/index';
 import App from './App.vue';
 
 const app = createApp(App);
 
-app.config.globalProperties.globalPath = ref([]);
-
+app.use(router);
 app.mount('#app');
 
 const appResize = () => {
-  const vh = window.innerHeight;
-  const vw = window.innerWidth;
-  document.documentElement.style.setProperty('--vh', `${vh}px`);
-  document.documentElement.style.setProperty('--vw', `${vw}px`);
-}
+	document.documentElement.style.setProperty(
+		'--vh',
+		`${window.innerHeight}px`
+	);
+	document.documentElement.style.setProperty(
+		'--vw',
+		`${window.innerWidth}px`
+	);
+};
 
-window.addEventListener('resize', appResize)
+window.addEventListener('resize', appResize);
 
-appResize()
+appResize();
