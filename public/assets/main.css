@@ -2,7 +2,12 @@
 	--blue:#5A8DEE;
 	--green:#39DA8A;
 	--red:#F26061;	
-	
+	--orange: #FDAC42;
+	--yellow:#FFCC00;
+	--lightblue:#74E0E5;
+	--purple:#A85ED6;
+
+
 	--vh: 100vh;
 	--vw: 100vw;
 }
@@ -95,4 +100,42 @@ td, th {
 
 table {
 	border-collapse: collapse;
+}
+
+.code {
+	padding: 1em;
+    margin: .5em 0;
+    overflow: auto;
+    border-radius: .3em;
+	background-color: var(--compl);
+}
+
+.code .hljs-keyword {
+	color:var(--red) !important;
+}
+
+.code .hljs-title{
+	color:var(--yellow) !important;
+}
+
+.code .hljs-operator{
+	color: lightgray !important;
+}
+
+.code .hljs-number{
+	color:var(--purple) !important;
+}
+
+.code .hljs-built_in{
+	color:var(--blue) !important;
+} 
+
+.code .hljs-string{
+	color:var(--green) !important;
+}
+
+.code *, .code{
+	font-weight: 400 !important;
+	font-family: 'Ubuntu Mono', monospace !important;
+	font-size: large !important;
 }

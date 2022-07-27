@@ -23,10 +23,10 @@ function code(text){
     let code = text.split("\n").slice(1).join("\r\n")
 
 	if ( lang == "" ) {
-		return "<pre class='language-python'>" + code + "</pre>"
+		return "<pre" + code + "</pre>"
 	}
 	else {
-		return "<pre class='language-"+lang+"'>" + Prism.highlight(code, Prism.languages[lang], lang) + "</pre>"
+		return "<pre class='code'>" + hljs.highlight(code, {language: lang}).value + "</pre>"
 	}
 }
 
