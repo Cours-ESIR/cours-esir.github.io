@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { ref, onMounted, watch } from 'vue';
+import { ref, watch } from 'vue';
 
 import GithubService from '@/services/GithubService';
 
