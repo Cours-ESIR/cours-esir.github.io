@@ -29,25 +29,33 @@
 
 @media print
 {
+	html,body{
+		height: auto !important;
+		overflow: auto !important;
+	}
 	.no-print	{
 		display: none !important;
 	}
-	#cours{
+	#router{
 		padding:0;
 	}
 }
 
-::-webkit-scrollbar{
-	width:16px
+@media screen and (min-width:1200px){
+	::-webkit-scrollbar{
+		width:16px
+	}
+	
+	::-webkit-scrollbar-thumb{
+		height:56px;
+		border-radius:8px;
+		border:4px solid transparent;
+		background-clip:content-box;
+		background-color: var(--text);
+	}
+	
 }
 
-::-webkit-scrollbar-thumb{
-	height:56px;
-	border-radius:8px;
-	border:4px solid transparent;
-	background-clip:content-box;
-	background-color: var(--text);
-}
 
 html,body, a,a:hover, a:visited, a:link {
     all:unset;

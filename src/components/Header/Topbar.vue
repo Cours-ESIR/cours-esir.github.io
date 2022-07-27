@@ -60,6 +60,8 @@ function share() {
 	margin:0;
 	display: grid;
 	place-items: center;
+    overflow-x: auto;
+    white-space: nowrap;
 }
 
 .button {
