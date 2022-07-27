@@ -1,0 +1,16 @@
+{
+  "background_color": "#ffffff",
+  "dir": "ltr",
+  "display": "standalone",
+  "name": "cours-esir.github",
+  "orientation": "any",
+  "scope": "/",
+  "short_name": "cours-esir.github",
+  "start_url": "/",
+  "theme_color": "#ffffff",
+  "icons": [
+    {
+      "src": "./esir.svg"
+    }
+  ]
+}
