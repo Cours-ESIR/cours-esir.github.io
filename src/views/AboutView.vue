@@ -3,27 +3,29 @@
 
 <template>
     <div>
-        # Responsabilité
+        <h1>Responsabilité</h1>
 
-        Nous n'utilisons pas de cookie, donc pour prendre le goûter c'est pas ici.
+        <p>Nous n'utilisons pas de cookie, donc pour prendre le goûter c'est pas ici.</p>
 
-        Nous n'avons pas d'affiliation concrète avec l'école ou le BDE (ISATI).
+        <p>Nous n'avons pas d'affiliation concrète avec l'ESIR ou son BDE (ISATI).</p>
 
-        # Outils utilisés
+        <h1>Outils utilisés</h1>
 
-        Le site ainsi que tous les cours sont hébergés sur Github.
+        <p>Le site ainsi que tous les cours sont hébergés sur Github.</p>
 
-        L'infrastructure du site est gérée par le framework vuejs avec l'intégration des modules prismjs, katex et marked.
+        <p>L'infrastructure du site est gérée par le framework vuejs avec l'intégration des modules prismjs, katex et marked.</p>
 
-        # Remerciements
+        <h1>Remerciements</h1>
 
-        Merci à tous ceux qui ont permis l'émergence de ce projet :
+        <p>Merci à tous ceux qui ont permis l'émergence de ce projet :</p>
 
-        - Vianney HERVE
-        - Malo THIEBAUD
-        - Tom CHAUVEL
+        <ul>
+            <li>Vianney HERVE</li>
+            <li>Malo THIEBAUD</li>
+            <li>Tom CHAUVEL</li>
+        </ul>       
 
-        Ainsi qu'à tous ceux qui ont contribué à la rédaction des cours :
+        <p>Ainsi qu'à tous ceux qui ont contribué à la rédaction des cours :</p>
     </div>
 </template>
 

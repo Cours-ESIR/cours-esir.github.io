@@ -59,7 +59,7 @@ function dico_add(text,char,dico,indices,func) {
     return indices.concat(codechar)
 }
 
-export function page(text){
+function page(text){
     let dico = {}
     let indices = []
     indices = dico_add(text,"$$",dico,indices,math)

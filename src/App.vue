@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { ref } from 'vue';
+import { ref,onUpdated } from 'vue';
 import { RouterView } from 'vue-router';
 import Menu from '@/components/Navigation/Menu.vue';
 import Topbar from '@/components/Header/Topbar.vue';
@@ -36,9 +36,21 @@ function isRequired(routeName: string): boolean {
 	let menus = ['/lessons', '/edit', '/viewer'];
 	return menus.includes(routeName);
 }
+
+function sleep(ms){
+	return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+onUpdated ( async () => {
+	document.querySelector("#loader").style.opacity = "0"
+	await sleep(1000)
+	document.querySelector("#loader").style.display = "none"
+})
+
 </script>
 
 <template>
+
 	<div id="content">
 		<Topbar id="topbar" v-if="isRequired($route.path)" class="no-print" />
 		<div id="router_par">
@@ -50,8 +62,6 @@ function isRequired(routeName: string): boolean {
 </template>
 
 <style>
-
-@import "style/main.css";
 
 #app {
   	display: flex;

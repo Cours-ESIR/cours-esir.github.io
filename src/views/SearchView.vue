@@ -39,17 +39,16 @@ function filter() {
     .input {
         display: flex;
         border: 3px solid var(--text);
-        align-items: center;
-        justify-content: space-evenly;
+        flex-wrap: nowrap;
         border-radius:1.5rem;
         transition:0.5s;
     }
 
     .input > *:nth-child(2) {
         all:unset;
-        flex:auto;
+        width:100%;
         background-color: transparent;
-        padding : 8px 8px 8px 8px ;
+        padding: 8px 0px;
         transition:0.5s;
     }
 

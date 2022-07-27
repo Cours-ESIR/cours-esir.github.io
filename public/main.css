@@ -1,7 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
-
-@import url('https://css.gg/all.css');
-
 :root {
 	--blue:#5A8DEE;
 	--green:#39DA8A;
@@ -39,6 +35,18 @@
 	#cours{
 		padding:0;
 	}
+}
+
+::-webkit-scrollbar{
+	width:16px
+}
+
+::-webkit-scrollbar-thumb{
+	height:56px;
+	border-radius:8px;
+	border:4px solid transparent;
+	background-clip:content-box;
+	background-color: var(--text);
 }
 
 html,body, a,a:hover, a:visited, a:link {

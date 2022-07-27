@@ -1,6 +1,5 @@
 <script lang="ts" setup>
-import { ref, onUpdated } from 'vue';
-import { page } from "@/services/format.js";
+import { ref, onMounted, watch } from 'vue';
 
 import GithubService from '@/services/GithubService';
 
@@ -10,15 +9,11 @@ const props = defineProps<{
 
 const content = ref('');
 
-let called = false
-
-onUpdated(async () => {
-    if(props.path !== '' && called == false) {
-        let raw = await GithubService.fetchFileContent(props.path);
-        content.value = page(raw);
-        called = true
-    }
+watch(props, async(NewProps) => {
+    let raw = await GithubService.fetchFileContent(NewProps.path);
+    content.value = page(raw);
 });
+
 </script>
 
 <template>

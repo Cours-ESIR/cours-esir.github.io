@@ -7,8 +7,8 @@ const file_name = ref('');
 const folder_path = ref('');
 
 onMounted(async () => {
-    folder_path.value = router.currentRoute.value.query.folder as string;
-    file_name.value = router.currentRoute.value.query.file as string;
+    folder_path.value = router.currentRoute.value.query.folder as string ?? "";
+    file_name.value = router.currentRoute.value.query.file as string ?? "";
 });
 
 </script>
