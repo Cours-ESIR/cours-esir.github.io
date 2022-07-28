@@ -28,7 +28,7 @@ const items = ref([
 	{
 		title: 'Salles',
 		route: '/salles',
-		class: 'gg-calendar'
+		class: 'gg-calendar',
 	},
 	{
 		title: 'Informations',
@@ -47,7 +47,7 @@ function sleep(ms: number) {
 }
 
 onUpdated(async () => {
-	let a = document.getElementById('#loader');
+	let a = document.querySelector('#loader') as any;
 	if (a) {
 		a.style.opacity = '0';
 		await sleep(1000);

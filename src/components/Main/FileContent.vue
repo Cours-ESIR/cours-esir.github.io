@@ -2,12 +2,10 @@
 import { ref, watch } from 'vue';
 import GithubService from '@/services/GithubService';
 
-// import { marked } from 'marked';
+import { marked } from 'marked';
+import katex from 'katex';
 import type { KatexOptions } from 'katex';
-
-const hljs = await (await import('highlight.js')).default;
-const katex = await (await import('katex')).default;
-const { marked } = await import('marked');
+import hljs from 'highlight.js';
 
 const options: KatexOptions = {
 	displayMode: true,
