@@ -4,9 +4,9 @@ import usePath from '@/composable/PathComposable';
 const globalPath = usePath();
 
 function back(route: string) {
-	if(route === '/viewer') {
-        router.push({
-			path: '/lessons'
+	if (route === '/viewer') {
+		router.push({
+			path: '/lessons',
 		});
 	} else {
 		globalPath.path.pop();
@@ -31,7 +31,7 @@ function share() {
 			<!-- @click="/* get the path to go to */" -->
 			<!-- <span>{{ part }}</span> -->
 		</template>
-		
+
 		<div class="path">
 			{{ globalPath.getFullPath() }}
 		</div>
@@ -57,11 +57,11 @@ function share() {
 }
 
 .path {
-	margin:0;
+	margin: 0;
 	display: grid;
 	place-items: center;
-    overflow-x: auto;
-    white-space: nowrap;
+	overflow-x: auto;
+	white-space: nowrap;
 }
 
 .button {

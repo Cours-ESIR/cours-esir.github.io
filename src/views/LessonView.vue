@@ -1,15 +1,12 @@
 <script lang="ts" setup>
-
 import FolderTree from '@/components/Main/FolderTree.vue';
 import usePath from '@/composable/PathComposable';
 
 const path = usePath();
-
 </script>
 
 <template>
-        <FolderTree :key="path.getFullPath()"/>
+	<FolderTree :key="path.getFullPath()" />
 </template>
 
-<style scoped>
-</style>
+<style scoped></style>

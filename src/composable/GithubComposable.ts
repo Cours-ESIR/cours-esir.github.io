@@ -59,7 +59,7 @@ function getNodeFromPath(path: string[]): TreeItem {
 			}
 		}
 	}
-})()
+})();
 
 export default function () {
 	return {
