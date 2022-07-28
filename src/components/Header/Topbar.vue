@@ -54,6 +54,7 @@ function share() {
 	background-color: var(--background);
 	z-index: 50000;
 	column-gap: 15px;
+	border-bottom: 3px solid var(--compl);
 }
 
 .path {

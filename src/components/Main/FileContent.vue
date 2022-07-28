@@ -2,8 +2,8 @@
 import { ref, watch } from 'vue';
 import GithubService from '@/services/GithubService';
 
-import { marked } from 'marked';
-import hljs from 'highlight.js';
+//import { marked } from 'marked';
+//import hljs from 'highlight.js';
 import katex, { type KatexOptions } from 'katex';
 
 const options: KatexOptions = {

@@ -26,6 +26,11 @@ const items = ref([
 		class: 'gg-pen'
 	},
 	{
+		title: 'Salles',
+		route: '/salles',
+		class: 'gg-calendar'
+	},
+	{
 		title: 'Informations',
 		route: '/about',
 		class: 'gg-info'
