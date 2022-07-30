@@ -7,7 +7,6 @@
 	--lightblue:#74E0E5;
 	--purple:#A85ED6;
 
-
 	--vh: 100vh;
 	--vw: 100vw;
 }
@@ -69,9 +68,18 @@
 	
 }
 
-
-html,body, a,a:hover, a:visited, a:link {
+html,body{
     all:unset;
+}
+
+a:link,a:visited {
+	color: var(--blue);
+	cursor: pointer;
+	text-decoration: unset;
+}
+
+a:hover {
+	color: var(--red);
 }
 
 html,body {
