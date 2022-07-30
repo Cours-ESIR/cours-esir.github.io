@@ -5,6 +5,7 @@ const globalPath = usePath();
 
 function back(route: string) {
 	if (route === '/viewer') {
+		globalPath.path = ((router.currentRoute.value.query.folder as string) ?? '').split('/');
 		router.push({
 			path: '/lessons',
 		});
