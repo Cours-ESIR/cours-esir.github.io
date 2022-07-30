@@ -92,7 +92,7 @@ onUpdated(async () => {
 #router {
 	padding: 20px;
 	margin: auto;
-	width: clamp(100px, calc(100% - 40px), 595px);
+	width: clamp(100px, calc(100% - 40px), calc( 1080px * 2480px / 3508px ));
 	height: auto;
 }
 
