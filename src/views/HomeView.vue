@@ -57,7 +57,7 @@
 		</p>
 		<p>Voici une vidéo explicative de comment créer un cours sur l'éditeur</p>
 
-		<video type="video/av1" controls src="https://github.com/Cours-ESIR/Medias/blob/main/explications%20cours.mkv?raw=true"></video>
+		<video controls src="https://raw.githubusercontent.com/Cours-ESIR/Medias/main/explications%20cours.webm"></video>
 
 		<h2 id="référents">Référents</h2>
 		<p>
