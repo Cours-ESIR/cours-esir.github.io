@@ -8,7 +8,6 @@
 	--purple:#A85ED6;
 
 	--vh: 100vh;
-	--vw: 100vw;
 }
 
 @media (prefers-color-scheme: light){
@@ -85,7 +84,7 @@ a:hover {
 html,body {
     background-color: var(--background);
 	height:var(--vh);
-	width: var(--vw);
+	width: 100vw;
 	overflow: hidden;
 }
 
@@ -98,7 +97,7 @@ html,body {
 	margin: 0px 0px 16px 0px !important;
 }
 
-#router img {
+#router img, #router video {
 	max-width : 100%;
 	max-height: 372px;
 	margin: auto;
