@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import { ref } from 'vue';
+import router from '@/router/index';
 import useGithub from '@/composable/GithubComposable';
 
 const github = useGithub();
@@ -19,6 +20,15 @@ function filter() {
 		}
 	}
 }
+
+function open_file(file: string): void {
+	router.push({
+		path: '/viewer',
+		query: {
+			filepath: file,
+		},
+	});
+}
 </script>
 
 <template>
@@ -30,7 +40,7 @@ function filter() {
 			<input v-model="input" @input="filter" />
 		</div>
 		<template v-for="file of list_filtered">
-			<p>{{ file }}</p>
+			<p @click="open_file(file)">{{ file }}</p>
 		</template>
 	</main>
 </template>
