@@ -77,7 +77,7 @@ onMounted(() => {
 		<div class="input">
 			<input v-model="date" type="date" />
 			<input v-model="time" type="time" />
-			<button @click="actualize()">Change</button>
+			<button style="cursor:pointer" @click="actualize()">Change</button>
 		</div>
 		<main class="grid">
 			<template v-for="(value, name) of salles">

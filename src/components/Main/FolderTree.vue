@@ -68,6 +68,7 @@ function push(child: ItemData) {
 	display: grid;
 	place-items: center;
 	transition: 0.3s;
+	cursor:pointer;
 }
 
 .folder {

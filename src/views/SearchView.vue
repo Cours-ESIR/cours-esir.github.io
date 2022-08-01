@@ -40,7 +40,7 @@ function open_file(file: string): void {
 			<input v-model="input" @input="filter" />
 		</div>
 		<template v-for="file of list_filtered">
-			<p @click="open_file(file)">{{ file }}</p>
+			<p style="cursor:pointer" @click="open_file(file)">{{ file }}</p>
 		</template>
 	</main>
 </template>
