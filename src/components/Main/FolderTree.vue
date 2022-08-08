@@ -56,7 +56,7 @@ function push(child: ItemData) {
 	grid-auto-rows: minmax(100px, 100px);
 
 	grid-template-columns: repeat(3, calc((100% - 2 * 20px) / 3));
-
+	user-select: none;
 	overflow: auto;
 	height: 100%;
 }

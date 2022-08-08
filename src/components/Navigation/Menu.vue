@@ -29,6 +29,7 @@ defineProps<{
 	grid-auto-flow: row;
 
 	background-color: var(--compl);
+	user-select: none;
 }
 
 .menu-container > .menu-item {
