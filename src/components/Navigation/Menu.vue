@@ -35,6 +35,7 @@ defineProps<{
 .menu-container > .menu-item {
 	display: flex;
 	align-items: center;
+	cursor: pointer;
 }
 
 .menu-container > .menu-item > .icon-container {

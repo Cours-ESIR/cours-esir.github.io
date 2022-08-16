@@ -19,6 +19,21 @@ function share() {
 		url: document.location.toString(),
 	});
 }
+
+function back_i(path,routepath){
+	let cond:number
+	let g_path = globalPath.getFullPath().split("/")
+	
+	if (path === 0){ cond = -1 }
+	else { cond = g_path.indexOf(path) }
+	
+	let i = g_path.length - cond -1
+
+	for (let y=0;y<i;y++){
+		globalPath.path.pop();
+	}
+}
+
 </script>
 
 <template>
@@ -26,15 +41,17 @@ function share() {
 		<div @click="back($route.path)" class="button">
 			<i class="gg-chevron-left"></i>
 		</div>
-		<template v-for="part of globalPath.path">
-			<!-- préparer le chemin pour pouvoir clicker sur un élément ? -->
-			<!-- @click="/* get the path to go to */" -->
-			<!-- <span>{{ part }}</span> -->
-		</template>
 
 		<div class="path">
-			{{ globalPath.getFullPath() }}
+			<a @click="back_i(0,$route.path)">
+				Home
+			</a>
+			<template v-for="path of globalPath.getFullPath().split('/')">
+				<pre> / </pre>
+				<a @click="back_i(path,$route.path)">{{ path }}</a>
+			</template>
 		</div>
+
 		<div onclick="window.print()" class="button">
 			<i class="gg-printer"></i>
 		</div>
@@ -59,13 +76,16 @@ function share() {
 
 .path {
 	margin: 0;
-	display: grid;
-	place-items: center;
-	overflow-x: auto;
-	white-space: nowrap;
+	display: block;
+	text-align: center;
+}
+
+.path > *{
+	display : inline-block;
 }
 
 .button {
+	cursor:pointer;
 	display: grid;
 	place-items: center;
 	aspect-ratio: 1/1;
