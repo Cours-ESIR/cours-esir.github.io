@@ -72,16 +72,20 @@ function back_i(path,routepath){
 	z-index: 50000;
 	column-gap: 15px;
 	border-bottom: 3px solid var(--compl);
+	user-select: none;
+
 }
 
 .path {
 	margin: 0;
-	display: block;
-	text-align: center;
+	display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .path > *{
-	display : inline-block;
+	cursor:pointer;
+	margin:0;
 }
 
 .button {
