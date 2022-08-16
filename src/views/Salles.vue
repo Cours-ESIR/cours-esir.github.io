@@ -1,23 +1,7 @@
 <script lang="ts" setup>
 import { onMounted, ref } from 'vue';
 
-type ClassRecord = {
-	[name: string]: { class: string };
-};
-
-let salles = ref<ClassRecord>({
-	'amphi-l': { class: 'grey' },
-	'amphi-m': { class: 'grey' },
-	'amphi-n': { class: 'grey' },
-	'salle-001': { class: 'grey' },
-	'salle-002': { class: 'grey' },
-	'salle-003': { class: 'grey' },
-	'salle-004': { class: 'grey' },
-	'salle-101': { class: 'grey' },
-	'salle-102': { class: 'grey' },
-	'salle-103': { class: 'grey' },
-	'salle-104': { class: 'grey' },
-});
+import sallesComposable from '@/composable/sallesComposable';
 
 function format(num: number) {
 	let str = `${num}`;
@@ -37,34 +21,33 @@ let minute = format(ndate.getMinutes());
 let date = ref(year + '-' + month + '-' + day);
 let time = ref(hour + ':' + minute);
 
+type ClassRecord = {
+	[name: string]: { class: string };
+};
+
+let salles = ref<ClassRecord>({
+	'amphi-l': { class: 'grey' },
+	'amphi-m': { class: 'grey' },
+	'amphi-n': { class: 'grey' },
+	'salle-001': { class: 'grey' },
+	'salle-002': { class: 'grey' },
+	'salle-003': { class: 'grey' },
+	'salle-004': { class: 'grey' },
+	'salle-101': { class: 'grey' },
+	'salle-102': { class: 'grey' },
+	'salle-103': { class: 'grey' },
+	'salle-104': { class: 'grey' },
+});
+
 async function actualize() {
-	for (let salle in salles.value) {
-		let date_milli = new Date(date.value).getTime();
-		let time_split = time.value.split(':');
-		let time_milli =
-			parseInt(time_split[0]) * 60 * 60 * 1000 +
-			parseInt(time_split[1]) * 60 * 1000;
+	let date_milli = new Date(date.value).getTime();
+	let time_split = time.value.split(':');
+	let time_milli = parseInt(time_split[0]) * 60 * 60 * 1000 + parseInt(time_split[1]) * 60 * 1000;
+	
+	let ntime:String = '&time=' + (time_milli + date_milli).toString();
 
-		let ntime = '&time=' + (time_milli + date_milli).toString();
+	salles.value = await sallesComposable().get_salles(salles.value,ntime)
 
-		let res = await fetch(
-			'https://api-aquabx.vercel.app/api/sallesESIR?salles=' +
-				JSON.stringify([salle]) +
-				'&type=libres' +
-				ntime
-		);
-		let data = await res.json();
-
-		let classe;
-
-		if (data[salle]['erreur']) {
-			break;
-		} else if (data[salle]['state']) {
-			salles.value[salle]['class'] = 'green';
-		} else {
-			salles.value[salle]['class'] = 'red';
-		}
-	}
 }
 
 onMounted(() => {
