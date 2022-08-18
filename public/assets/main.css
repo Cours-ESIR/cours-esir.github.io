@@ -117,38 +117,38 @@ table {
 	border-collapse: collapse;
 }
 
-.code {
+#router>pre {
 	padding: .7em;
     overflow: auto;
     border-radius: .7em;
 	background-color: var(--compl);
 }
 
-.code .hljs-keyword {
+.hljs .hljs-keyword {
 	color:var(--red) !important;
 }
 
-.code .hljs-title{
+.hljs .hljs-title{
 	color:var(--yellow) !important;
 }
 
-.code .hljs-operator{
+.hljs .hljs-operator, .hljs .hljs-comment{
 	color: lightgray !important;
 }
 
-.code .hljs-number{
+.hljs .hljs-number{
 	color:var(--purple) !important;
 }
 
-.code .hljs-built_in{
+.hljs .hljs-built_in{
 	color:var(--blue) !important;
 } 
 
-.code .hljs-string{
+.hljs .hljs-string{
 	color:var(--green) !important;
 }
 
-.code *, .code{
+.hljs *, .hljs{
 	font-weight: 400 !important;
 	font-family: 'Ubuntu Mono', monospace !important;
 	font-size: large !important;

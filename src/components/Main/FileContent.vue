@@ -2,83 +2,57 @@
 import { ref, watch } from 'vue';
 import GithubService from '@/services/GithubService';
 
-import { marked } from 'marked';
+/** New Markdown + highlightjs + katex support */
+import md from 'markdown-it';
+import hljs from 'highlight.js'
+import mdhljs from 'markdown-it-highlightjs';
 import katex from 'katex';
-import type { KatexOptions } from 'katex';
-import hljs from 'highlight.js';
+import mdkatex from 'markdown-it-texmath';
+import mdemoji from 'markdown-it-emoji';
 
-const options: KatexOptions = {
-	displayMode: true,
-	throwOnError: false,
-	macros: {
-		'\\(': '\\lparen',
-		'\\)': '\\rparen',
-		'\\{': '\\lbrace',
-		'\\}': '\\rbrace',
-		'\\[': '\\lbrack',
-		'\\]': '\\rbrack',
-		'\\n': '\\\\ \\ \\\\',
-		'\\vec': '\\overrightarrow{#1}',
-		'\\embrace': '\\left#2\\begin{split} #1 \\end{split}\\right#3',
-		'\\aembrace': '\\embrace{#1}{\\{}{\\}}',
-		'\\pembrace': '\\embrace{#1}{\\(}{\\)}',
-		'\\cembrace': '\\embrace{#1}{\\[}{\\]}',
-		'\\abs': '\\displaystyle\\left\\lvert{#1}\\right\\rvert',
-	},
-};
+const markdownit = md();
+markdownit
+.use(mdhljs, {
+	auto: true,
+	ignoreIllegals: true,
+	code: true,
+	inline: false,
+	hljs
+})
+.use(mdkatex, {
+	engine: katex,
+	delimiters: 'dollars',
+	katexOptions: {
+		displayMode: true,
+		throwOnError: false,
+		macros: {
+			'\\(': '\\lparen',
+			'\\)': '\\rparen',
+			'\\{': '\\lbrace',
+			'\\}': '\\rbrace',
+			'\\[': '\\lbrack',
+			'\\]': '\\rbrack',
+			'\\n': '\\\\ \\ \\\\',
+			'\\vec': '\\overrightarrow{#1}',
+			'\\embrace': '\\left#2\\begin{split} #1 \\end{split}\\right#3',
+			'\\aembrace': '\\embrace{#1}{\\{}{\\}}',
+			'\\pembrace': '\\embrace{#1}{\\(}{\\)}',
+			'\\cembrace': '\\embrace{#1}{\\[}{\\]}',
+			'\\abs': '\\displaystyle\\left\\lvert{#1}\\right\\rvert',
+		}
+	}
+})
+.use(mdemoji)
+.use(function underline(md) {
+	function renderEm(tokens, idx, opts, _, slf) {
+		let token = tokens[idx];
+		if(token.markup === '_')
+			token.tag = 'u';
+		return slf.renderToken(tokens, idx, opts);
+	}
 
-marked.use({
-	extensions: [
-		{
-			name: 'latex-inline',
-			level: 'inline',
-			tokenizer(markdown: string, tokens) {
-				let line = markdown.match(/.*?\$(.+?)\$/gs);
-				if (line === null) return;
-
-				console.log(line[1]);
-
-				let first = line[0].indexOf('$');
-				let last = line[0].indexOf('$', first + 1);
-
-				this.lexer.inlineTokens(line[0].slice(0, first), tokens);
-
-				return {
-					raw: line[0],
-					text: line[0].slice(first + 1, last),
-					type: 'latex-inline',
-				};
-			},
-			renderer(token) {
-				return katex.renderToString(token.text);
-			},
-		},
-		{
-			name: 'latex-block',
-			level: 'block',
-			tokenizer(markdown: string, tokens) {
-				let block = markdown.match(/^\${2}(?<latex>.*?)\${2}/gs);
-				if (block === null) return;
-
-				return {
-					raw: block[0],
-					text: block[0].slice(2, block[0].length - 2),
-					type: 'latex-block',
-				};
-			},
-			renderer(token) {
-				return katex.renderToString(token.text, options);
-			},
-		},
-	],
-	renderer: {
-		code(code: string, language: string) {
-			if (!language) return code;
-			return `<pre class="code">${
-				hljs.highlight(code, { language }).value
-			}</pre>`;
-		},
-	},
+	md.renderer.rules.em_open = renderEm;
+	md.renderer.rules.em_close = renderEm;
 });
 
 const props = defineProps<{
@@ -89,7 +63,7 @@ const content = ref('');
 
 watch(props, async (NewProps) => {
 	let raw = await GithubService.fetchFileContent(NewProps.path);
-	content.value = marked.parse(raw);
+	content.value = markdownit.render(raw);
 });
 </script>
 
