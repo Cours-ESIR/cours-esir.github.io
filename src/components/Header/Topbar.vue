@@ -20,18 +20,10 @@ function share() {
 	});
 }
 
-function back_i(path,routepath){
-	let cond:number
-	let g_path = globalPath.getFullPath().split("/")
-	
-	if (path === 0){ cond = -1 }
-	else { cond = g_path.indexOf(path) }
-	
-	let i = g_path.length - cond -1
-
-	for (let y=0;y<i;y++){
-		globalPath.path.pop();
-	}
+function rewind(route: string, count: number) {
+	globalPath.stepBack(count);
+	if(route === '/lessons') return;
+	router.push('/lessons');
 }
 
 </script>
@@ -43,12 +35,12 @@ function back_i(path,routepath){
 		</div>
 
 		<div class="path">
-			<a @click="back_i(0,$route.path)">
-				Home
+			<a @click="rewind($route.path, globalPath.path.length)">
+				<i class="gg-home"></i>
 			</a>
-			<template v-for="path of globalPath.getFullPath().split('/')">
+			<template v-for="(path, index) of globalPath.path">
 				<pre> / </pre>
-				<a @click="back_i(path,$route.path)">{{ path }}</a>
+				<a @click="rewind($route.path, globalPath.path.length - (index+1))">{{ path }}</a>
 			</template>
 		</div>
 
