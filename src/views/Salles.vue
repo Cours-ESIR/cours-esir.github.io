@@ -44,7 +44,7 @@ async function actualize() {
 	let time_split = time.value.split(':');
 	let time_milli = parseInt(time_split[0]) * 60 * 60 * 1000 + parseInt(time_split[1]) * 60 * 1000;
 	
-	let ntime:String = '&time=' + (time_milli + date_milli).toString();
+	let ntime:String = '&date=' + (time_milli + date_milli).toString();
 
 	salles.value = await sallesComposable().get_salles(salles.value,ntime)
 
