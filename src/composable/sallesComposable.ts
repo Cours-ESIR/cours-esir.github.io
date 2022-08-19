@@ -15,7 +15,7 @@ async function get_salles(salles_data:ClassRecord,date:String=""): Promise<Class
 
 		let data = await SallesESIR.fetchSalles([salle],date)
 
-		if (data[salle]['erreur']) {
+		if (data[salle]['error']) {
 			salles_data[salle]['class'] = 'grey';
 		} else if (data[salle]['state']) {
 			salles_data[salle]['class'] = 'green';
