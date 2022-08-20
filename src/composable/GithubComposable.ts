@@ -10,6 +10,11 @@ const root = reactive<TreeItem>({
 });
 const files = reactive<string[]>([]);
 const folders = reactive<string[]>([]);
+const contributors = reactive<any[]>([])
+
+function getContributors(){
+	return contributors
+}
 
 function getNodeFromPath(path: string[]): TreeItem {
 	let item: TreeItem | undefined = root;
@@ -22,6 +27,7 @@ function getNodeFromPath(path: string[]): TreeItem {
 }
 
 (async () => {
+	contributors.value = await GithubService.fetchContrib()
 	let data: RepositoryTree = await GithubService.fetchTree();
 
 	for (let item of data.tree) {
@@ -67,5 +73,6 @@ export default function () {
 		files,
 		folders,
 		getNodeFromPath,
+		getContributors,
 	};
 }
