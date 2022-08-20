@@ -73,11 +73,13 @@ function rewind(route: string, count: number) {
 	display: flex;
     justify-content: center;
     align-items: center;
+	overflow: auto;
 }
 
 .path > *{
 	cursor:pointer;
 	margin:0;
+	white-space: nowrap;
 }
 
 .button {
