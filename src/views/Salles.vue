@@ -21,8 +21,10 @@ let minute = format(ndate.getMinutes());
 let date = ref(year + '-' + month + '-' + day);
 let time = ref(hour + ':' + minute);
 
+
+
 type ClassRecord = {
-	[name: string]: { class: string };
+	[name: string]: { class: string , time?: number };
 };
 
 let salles = ref<ClassRecord>({
@@ -39,12 +41,12 @@ let salles = ref<ClassRecord>({
 	'salle-104': { class: 'grey' },
 });
 
+let timestamp:number
+
 async function actualize() {
-	let date_milli = new Date(date.value).getTime();
-	let time_split = time.value.split(':');
-	let time_milli = parseInt(time_split[0]) * 60 * 60 * 1000 + parseInt(time_split[1]) * 60 * 1000;
-	
-	let ntime:String = '&date=' + (time_milli + date_milli).toString();
+
+	timestamp = new Date(date.value + " " + time.value).getTime();
+	let ntime:String = '&date=' + (timestamp).toString();
 
 	salles.value = await sallesComposable().get_salles(salles.value,ntime)
 
@@ -53,6 +55,28 @@ async function actualize() {
 onMounted(() => {
 	actualize();
 });
+
+function stringify_date(time:number) : string{
+	let date_theo = new Date(timestamp)
+	let date_time = new Date(time)
+
+	console.log(hour,minute)
+
+	const tomorrow = new Date(date_theo)
+	tomorrow.setDate(tomorrow.getDate() + 1)
+
+	if ( date_theo.getDate() === date_time.getDate() && date_theo.getMonth() === date_time.getMonth()){
+		return `Jusqu'à ${date_time.getHours()}:${date_time.getMinutes()}`
+	}
+	else if ( tomorrow.getDate() === date_time.getDate() && tomorrow.getMonth() === date_time.getMonth()){
+		return `Jusqu'à demain à ${date_time.getHours()}:${date_time.getMinutes()}`
+	}
+	else {
+		return `Jusqu'au ${date_time.getDate()}/${date_time.getMonth()+1}`
+	}
+
+}
+
 </script>
 
 <template>
@@ -64,7 +88,11 @@ onMounted(() => {
 		</div>
 		<main class="grid">
 			<template v-for="(value, name) of salles">
-				<div :class="value.class + ' box'">{{ name }}</div>
+				<div :class="value.class + ' box'">
+					{{ name }}
+					<br>
+					{{ stringify_date(value.time) }}
+				</div>
 			</template>
 		</main>
 	</div>
