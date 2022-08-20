@@ -69,7 +69,7 @@ function stringify_date(time:number) : string{
 		return `Jusqu'à ${date_time.getHours()}:${date_time.getMinutes()}`
 	}
 	else if ( tomorrow.getDate() === date_time.getDate() && tomorrow.getMonth() === date_time.getMonth()){
-		return `Jusqu'à demain à ${date_time.getHours()}:${date_time.getMinutes()}`
+		return `Jusqu'à demain ${date_time.getHours()}:${date_time.getMinutes()}`
 	}
 	else {
 		return `Jusqu'au ${date_time.getDate()}/${date_time.getMonth()+1}`
@@ -159,5 +159,11 @@ function stringify_date(time:number) : string{
 
 .red {
 	border: solid 3px var(--red);
+}
+
+@media screen and (max-width: 500px) {
+	.grid {
+		grid-template-columns: repeat(1, 100%);
+	}
 }
 </style>
