@@ -35,7 +35,7 @@ function rewind(route: string, count: number) {
 		</div>
 
 		<div class="path">
-			<a @click="rewind($route.path, globalPath.path.length)">
+			<a @click="rewind($route.path, globalPath.path.length)" style="height: 10px;">
 				<i class="gg-home"></i>
 			</a>
 			<template v-for="(path, index) of globalPath.path">
