@@ -38,6 +38,11 @@ const router = createRouter({
 			name: 'salles',
 			component: () => import('@/views/Salles.vue'),
 		},
+		{
+			path: '/Planning',
+			name: 'planning',
+			component: () => import('@/views/Planning.vue'),
+		},
 	],
 });
 
