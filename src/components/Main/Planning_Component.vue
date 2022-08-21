@@ -4,6 +4,14 @@ const props = defineProps<{
 	planning: [];
 }>();
 
+let hours : number[] = [
+    6,7,8,9,10,11,12,13,14,15,16,17,18,19,20
+]
+
+document.documentElement.style.setProperty(
+	'--hours',
+	`${hours.at(-1)-hours[0]}`
+);
 
 </script>
 
@@ -21,28 +29,21 @@ const props = defineProps<{
                 <column>Dimanche</column>
             </rowheader>
             <rowbody>
-
-                
                 <column class="events-list" v-for="day of planning">
-                    <div v-for="event of day" :style="{top:'calc( 50px *'+event.start+')',height: 'calc(50px *'+ event.duration+')'}"></div>
-                    
+                    <div v-for="event of day" :style="{top:`calc( 50px *${event.start-hours[0]})`,height: `calc( 50px *${event.duration})`}"></div>
                 </column>
             </rowbody>
             <row-legend>
-                <div class="lines" v-for="y in 24" :style="{top:'calc( 50px *'+y+')'}">
+                <div class="lines" v-for="y of hours" :style="{top:`calc( 50px *${y-hours[0]})`}">
                     <span class="text">{{y%24}}h00</span>
                     <span class="line"></span>
                 </div>
             </row-legend>
         </div-planning>
-
-
-
 </template>
 
-
-
 <style scoped>
+
     div-planning{
         width:100%;
         display: grid;
@@ -71,7 +72,7 @@ const props = defineProps<{
 
     div-planning > row-legend{
         position: absolute;
-        height: calc( 50px * 24 );
+        height: calc( 50px * var(--hours) );
         top:66px;
         z-index: -1;
     }
@@ -103,7 +104,7 @@ const props = defineProps<{
 
     .events-list {
         position: relative;
-        height: calc( 50px * 24 );
+        height: calc( 50px * var(--hours) );
     }
     .events-list > * {
         --decalage : 0.1em;

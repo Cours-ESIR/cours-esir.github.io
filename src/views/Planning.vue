@@ -3,12 +3,12 @@
 
     let planning = [
         [{"start":15.5,"duration":0.75}],
+        [{"start":15.5,"duration":0.75},{"start":9,"duration":0.5}],
         [{"start":15.5,"duration":0.75}],
         [{"start":15.5,"duration":0.75}],
         [{"start":15.5,"duration":0.75}],
         [{"start":15.5,"duration":0.75}],
-        [{"start":0,"duration":1.75}],
-        [{"start":23,"duration":1}]
+        [{"start":15.5,"duration":0.75}],
     ]
 
 </script>
