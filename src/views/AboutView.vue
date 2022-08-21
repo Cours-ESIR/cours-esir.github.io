@@ -1,4 +1,5 @@
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+import Contribution from "../components/Main/Contribution.vue";</script>
 
 <template>
 	<div>
@@ -34,6 +35,7 @@
 		</ul>
 
 		<p>Ainsi qu'à tous ceux qui ont contribué à la rédaction des cours :</p>
+		<Contribution/>
 	</div>
 </template>
 

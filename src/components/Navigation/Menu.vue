@@ -39,7 +39,7 @@ defineProps<{
 }
 
 .menu-container > .menu-item > .icon-container {
-	flex: 20px;
+	width: 65px;
 	display: grid;
 	place-items: center;
 }
@@ -61,6 +61,11 @@ defineProps<{
 
 	.menu-container > .menu-item > .item-title {
 		display: none;
+	}
+
+	.menu-container > .menu-item > .icon-container{
+		width:unset;
+		flex:auto;
 	}
 }
 </style>
