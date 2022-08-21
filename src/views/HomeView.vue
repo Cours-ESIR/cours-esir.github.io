@@ -2,7 +2,7 @@
 
 <template>
 	<div>
-		<h2>📖 Cours-ESIR</h2>
+		<h1>📖 Cours-ESIR</h1>
 		<p>
 			Bonjour et bienvenue sur ce site qui a pour but de répertorier les
 			cours de l'ESIR.
@@ -11,7 +11,7 @@
 			La création, modification et suppression des cours se fera par le
 			biais de <a href="https://github.com/Cours-ESIR/Cours">github</a>.
 		</p>
-		<h2 id="règles">⚠️ Règles</h2>
+		<h1 id="règles">⚠️ Règles</h1>
 		<p>Ces cours devront suivre quelques règles :</p>
 		<ul>
 			<li>
@@ -24,9 +24,9 @@
 				ESIR1/2021-2022 )
 			</li>
 		</ul>
-		<h2 id="guide-pour-créer--modifier-un-cours">
+		<h1 id="guide-pour-créer--modifier-un-cours">
 			📝 Guide pour créer / modifier un cours
-		</h2>
+		</h1>
 
 		<p>
 			Un éditeur est à votre disposition. Celui-ci permet de modifier l'ensemble des cours puis de les envoyer à la vérification
@@ -43,7 +43,7 @@
 			Sinon vous pouvez également modifié les fichiers de votre côté et les renvoyer via une "pull request".
 		</p>
 
-		<h2 id="référents">🧑‍💻 Référents</h2>
+		<h1 id="référents">🧑‍💻 Référents</h1>
 		<p>
 			Si vous avez des questions, vous pouvez contacter nos référents
 			ci-dessous
