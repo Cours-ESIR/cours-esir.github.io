@@ -30,9 +30,9 @@ function rewind(route: string, count: number) {
 
 <template>
 	<div class="topbar">
-		<div @click="back($route.path)" class="button">
+		<a @click="back($route.path)" class="button">
 			<i class="gg-chevron-left"></i>
-		</div>
+		</a>
 
 		<div class="path">
 			<a @click="rewind($route.path, globalPath.path.length)" style="height: 10px;">
@@ -87,13 +87,10 @@ function rewind(route: string, count: number) {
 	display: grid;
 	place-items: center;
 	aspect-ratio: 1/1;
-	height: calc(100% - 6px);
-	border-radius: 999px;
-	border: 3px solid transparent;
-	transition: 0.5s;
+	height: 100%;
 }
 
-.button:hover {
-	border: 3px solid var(--text);
+.button:hover > *{
+	color: var(--red);
 }
 </style>
