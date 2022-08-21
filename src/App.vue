@@ -20,11 +20,11 @@ const items = ref([
 		route: '/search',
 		class: 'gg-search',
 	},
-	{
-		title: 'Modification',
-		route: '/edit',
-		class: 'gg-pen',
-	},
+	// {
+	// 	title: 'Modification',
+	// 	route: '/edit',
+	// 	class: 'gg-pen',
+	// },
 	{
 		title: 'Salles',
 		route: '/salles',

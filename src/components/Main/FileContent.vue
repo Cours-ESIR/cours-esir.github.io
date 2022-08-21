@@ -10,7 +10,10 @@ import katex from 'katex';
 import mdkatex from 'markdown-it-texmath';
 import mdemoji from 'markdown-it-emoji';
 
-const markdownit = md();
+const markdownit = md({
+	html: true,
+});
+
 markdownit
 .use(mdhljs, {
 	auto: true,
@@ -22,6 +25,7 @@ markdownit
 .use(mdkatex, {
 	engine: katex,
 	delimiters: 'dollars',
+	outerSpace: true,
 	katexOptions: {
 		displayMode: true,
 		throwOnError: false,
