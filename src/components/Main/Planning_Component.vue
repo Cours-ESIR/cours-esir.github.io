@@ -61,13 +61,17 @@ document.documentElement.style.setProperty(
 
     div-planning > rowheader{
         position: sticky;
-        padding-top:40px;
-        top:0;
+        top:0px;
         border-bottom:1px solid var(--text);
         width: 100%;
         background-color: var(--background);
         z-index: 5;
         text-align: center;
+    }
+
+    div-planning > rowheader > column{
+        margin: 20px 5px;
+        width: calc(100% - 10px);
     }
 
     div-planning > row-legend{
@@ -96,6 +100,8 @@ document.documentElement.style.setProperty(
 
     column {
         width: 100%;
+        text-overflow: '..';
+        overflow: hidden;
     }
 
     column > * {
