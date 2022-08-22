@@ -8,6 +8,7 @@ const root = reactive<TreeItem>({
 	kind: ItemKind.folder,
 	children: [],
 });
+
 const files = reactive<string[]>([]);
 const folders = reactive<string[]>([]);
 const contributors = reactive<any[]>([])
@@ -22,7 +23,6 @@ function getNodeFromPath(path: string[]): TreeItem {
 		item = item?.children.find((el: { name: string }) => {
 			return el.name === part;
 		});
-
 	}
 	return item ?? root;
 }

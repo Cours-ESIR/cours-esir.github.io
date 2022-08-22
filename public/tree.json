@@ -1,0 +1,218 @@
+{
+    "sha": "253b24a937b2fdc4d629221af7410fc36c26558d",
+    "url": "https://api.github.com/repos/Cours-ESIR/Cours/git/trees/253b24a937b2fdc4d629221af7410fc36c26558d",
+    "tree": [
+      {
+        "path": "CUPGE 1",
+        "mode": "040000",
+        "type": "tree",
+        "sha": "ec59be1a6dce970280239a64fdd516b8fa7832b1",
+        "url": "https://api.github.com/repos/Cours-ESIR/Cours/git/trees/ec59be1a6dce970280239a64fdd516b8fa7832b1"
+      },
+      {
+        "path": "CUPGE 1/2021-2022",
+        "mode": "040000",
+        "type": "tree",
+        "sha": "28b70991704ed23807692018c64f112936591014",
+        "url": "https://api.github.com/repos/Cours-ESIR/Cours/git/trees/28b70991704ed23807692018c64f112936591014"
+      },
+      {
+        "path": "CUPGE 1/2021-2022/Chim Sol Cin S2",
+        "mode": "040000",
+        "type": "tree",
+        "sha": "cfca30ccc3d91c072ccf623536ee8c0a0b5cbf4c",
+        "url": "https://api.github.com/repos/Cours-ESIR/Cours/git/trees/cfca30ccc3d91c072ccf623536ee8c0a0b5cbf4c"
+      },
+      {
+        "path": "CUPGE 1/2021-2022/Chim Sol Cin S2/Ch 1 - généralités sur les solutions aqueuses.md",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "6e8c9944c7190b44f3953bca98a1650109568dde",
+        "size": 6673,
+        "url": "https://api.github.com/repos/Cours-ESIR/Cours/git/blobs/6e8c9944c7190b44f3953bca98a1650109568dde"
+      },
+      {
+        "path": "CUPGE 1/2021-2022/Electronique Analogique",
+        "mode": "040000",
+        "type": "tree",
+        "sha": "d83b14c0a87f3624b3d9db0db159a351c6418c18",
+        "url": "https://api.github.com/repos/Cours-ESIR/Cours/git/trees/d83b14c0a87f3624b3d9db0db159a351c6418c18"
+      },
+      {
+        "path": "CUPGE 1/2021-2022/Electronique Analogique/Circuits électroniques et théorèmes généraux.md",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "ac6e3a06694cc4d73db9551e27108cdf9110df69",
+        "size": 3471,
+        "url": "https://api.github.com/repos/Cours-ESIR/Cours/git/blobs/ac6e3a06694cc4d73db9551e27108cdf9110df69"
+      },
+      {
+        "path": "CUPGE 1/2021-2022/Electronique Analogique/Définitions.md",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "8641e744511393a84e8a38dadba10867e44ee04a",
+        "size": 4481,
+        "url": "https://api.github.com/repos/Cours-ESIR/Cours/git/blobs/8641e744511393a84e8a38dadba10867e44ee04a"
+      },
+      {
+        "path": "CUPGE 1/2021-2022/Electronique Analogique/Lois.md",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "f904eec25434d50d9165b0bccd4781794ae29768",
+        "size": 1844,
+        "url": "https://api.github.com/repos/Cours-ESIR/Cours/git/blobs/f904eec25434d50d9165b0bccd4781794ae29768"
+      },
+      {
+        "path": "CUPGE 1/2021-2022/Info",
+        "mode": "040000",
+        "type": "tree",
+        "sha": "7a79fb487dac0227faa0d1a57e24e74cb1c35ef6",
+        "url": "https://api.github.com/repos/Cours-ESIR/Cours/git/trees/7a79fb487dac0227faa0d1a57e24e74cb1c35ef6"
+      },
+      {
+        "path": "CUPGE 1/2021-2022/Info/python - Les attributions de valeurs.md",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "3a1135dbf2172b05f36ce33c42c46025c87a59ee",
+        "size": 252,
+        "url": "https://api.github.com/repos/Cours-ESIR/Cours/git/blobs/3a1135dbf2172b05f36ce33c42c46025c87a59ee"
+      },
+      {
+        "path": "CUPGE 1/2021-2022/Info/python - Les boucles.md",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "3632fc762ded61f57027f0719b92e20d1caf508f",
+        "size": 638,
+        "url": "https://api.github.com/repos/Cours-ESIR/Cours/git/blobs/3632fc762ded61f57027f0719b92e20d1caf508f"
+      },
+      {
+        "path": "CUPGE 1/2021-2022/Info/python - Les comparateurs.md",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "754dc6e9cdba75ecb7f714be843e85f67485f878",
+        "size": 664,
+        "url": "https://api.github.com/repos/Cours-ESIR/Cours/git/blobs/754dc6e9cdba75ecb7f714be843e85f67485f878"
+      },
+      {
+        "path": "CUPGE 1/2021-2022/Info/python - Les fonctions.md",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "fcb928b481094c3d89c74a25e2d16fd73ea8d4b5",
+        "size": 1007,
+        "url": "https://api.github.com/repos/Cours-ESIR/Cours/git/blobs/fcb928b481094c3d89c74a25e2d16fd73ea8d4b5"
+      },
+      {
+        "path": "CUPGE 1/2021-2022/Info/python - Les listes.md",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "9fa1e20449a6fab328eb11a3e3c6b001fcd51283",
+        "size": 1344,
+        "url": "https://api.github.com/repos/Cours-ESIR/Cours/git/blobs/9fa1e20449a6fab328eb11a3e3c6b001fcd51283"
+      },
+      {
+        "path": "CUPGE 1/2021-2022/Info/python - Les types.md",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "5603d52f37774b3cc0e1531d7174a55c9d7b6426",
+        "size": 1041,
+        "url": "https://api.github.com/repos/Cours-ESIR/Cours/git/blobs/5603d52f37774b3cc0e1531d7174a55c9d7b6426"
+      },
+      {
+        "path": "CUPGE 1/2021-2022/Info/uno.md",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "7e5e90ccf59fd6fda900ae5b8f04341514177c02",
+        "size": 1325,
+        "url": "https://api.github.com/repos/Cours-ESIR/Cours/git/blobs/7e5e90ccf59fd6fda900ae5b8f04341514177c02"
+      },
+      {
+        "path": "CUPGE 1/2021-2022/MathsS2",
+        "mode": "040000",
+        "type": "tree",
+        "sha": "f08da63afc0de3602b013dc20dfe2d003682ff5b",
+        "url": "https://api.github.com/repos/Cours-ESIR/Cours/git/trees/f08da63afc0de3602b013dc20dfe2d003682ff5b"
+      },
+      {
+        "path": "CUPGE 1/2021-2022/MathsS2/06-05-22.md",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "1c298713096925b68ac9ac43fcf17e4f9db88c77",
+        "size": 2548,
+        "url": "https://api.github.com/repos/Cours-ESIR/Cours/git/blobs/1c298713096925b68ac9ac43fcf17e4f9db88c77"
+      },
+      {
+        "path": "CUPGE 1/2021-2022/MathsS2/Ex-Int-Impropre.md",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "4231c40794fa768e3c51c5cfb92aef1bc4f34bc0",
+        "size": 3775,
+        "url": "https://api.github.com/repos/Cours-ESIR/Cours/git/blobs/4231c40794fa768e3c51c5cfb92aef1bc4f34bc0"
+      },
+      {
+        "path": "CUPGE 1/2021-2022/MathsS2/ExoInt_TD4.md",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "71a6ca5d46e92be1533711a2f8c4a3745a32096e",
+        "size": 4772,
+        "url": "https://api.github.com/repos/Cours-ESIR/Cours/git/blobs/71a6ca5d46e92be1533711a2f8c4a3745a32096e"
+      },
+      {
+        "path": "CUPGE 1/2021-2022/MathsS2/Int-Impropres.md",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "df99935d16521c998a1cb4927ee28a8862af0b31",
+        "size": 4844,
+        "url": "https://api.github.com/repos/Cours-ESIR/Cours/git/blobs/df99935d16521c998a1cb4927ee28a8862af0b31"
+      },
+      {
+        "path": "CUPGE 1/2021-2022/MathsS2/IntCurvi.md",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "27e44ab8e588d7b84f50229bae54139a275e4d66",
+        "size": 3673,
+        "url": "https://api.github.com/repos/Cours-ESIR/Cours/git/blobs/27e44ab8e588d7b84f50229bae54139a275e4d66"
+      },
+      {
+        "path": "CUPGE 1/2021-2022/MathsS2/MathsS2_.md",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "4319a70442d47b12519e0812d80e74d1e703fb35",
+        "size": 6983,
+        "url": "https://api.github.com/repos/Cours-ESIR/Cours/git/blobs/4319a70442d47b12519e0812d80e74d1e703fb35"
+      },
+      {
+        "path": "CUPGE 1/2021-2022/MathsS2/Suites_et_Series_numeriques.md",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "857a63106eefcb039392a80cec1d037d166a8bbf",
+        "size": 2569,
+        "url": "https://api.github.com/repos/Cours-ESIR/Cours/git/blobs/857a63106eefcb039392a80cec1d037d166a8bbf"
+      },
+      {
+        "path": "CUPGE 1/2021-2022/MathsS2/ThmOstrogradsky.md",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "828b58559b3745c40bc60eff89273cc4e4af6f43",
+        "size": 1791,
+        "url": "https://api.github.com/repos/Cours-ESIR/Cours/git/blobs/828b58559b3745c40bc60eff89273cc4e4af6f43"
+      },
+      {
+        "path": "CUPGE 1/2021-2022/MathsS2/onrefaitlecoursapreslecours.md",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "2429c76fe18495095a14e881186d7cfbeb931271",
+        "size": 4996,
+        "url": "https://api.github.com/repos/Cours-ESIR/Cours/git/blobs/2429c76fe18495095a14e881186d7cfbeb931271"
+      },
+      {
+        "path": "CUPGE 1/2021-2022/MathsS2/rev.md",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "3c0bccddc15035c8205260aaaf457d3ebd03a202",
+        "size": 4180,
+        "url": "https://api.github.com/repos/Cours-ESIR/Cours/git/blobs/3c0bccddc15035c8205260aaaf457d3ebd03a202"
+      }
+    ],
+    "truncated": false
+  }
+  

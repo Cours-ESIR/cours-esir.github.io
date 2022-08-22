@@ -5,13 +5,6 @@ import usePath from '@/composable/PathComposable';
 import useGithub from '@/composable/GithubComposable';
 import { ItemKind, type ItemData, type TreeItem } from '@/types/Tree';
 
-const globalPath = usePath();
-const github = useGithub();
-
-
-const currentNode = ref<TreeItem>( github.getNodeFromPath( globalPath.path ) );
-console.log(currentNode)
-
 function getIcon(kind: ItemKind): string {
 	return kind === ItemKind.folder ? 'gg-folder' : 'gg-file';
 }
@@ -25,6 +18,10 @@ function push(child: ItemData) {
 	globalPath.stepForward(name)
 	currentNode.value = github.getNodeFromPath(globalPath.path);
 }
+
+const globalPath = usePath();
+const github = useGithub();
+const currentNode = ref<TreeItem>( github.getNodeFromPath( globalPath.path ) )
 
 </script>
 

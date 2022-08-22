@@ -14,10 +14,6 @@ function share() {
 	});
 }
 
-function rewind(route: string, count: number) {
-	globalPath.stepBack(count);
-}
-
 </script>
 
 <template>
@@ -27,12 +23,12 @@ function rewind(route: string, count: number) {
 		</a>
 
 		<div class="path">
-			<a @click="rewind($route.path, globalPath.path.length)" style="height: 10px;">
+			<a @click="globalPath.stepBack(globalPath.path.length)" style="height: 10px;">
 				<i class="gg-home"></i>
 			</a>
 			<template v-for="(path, index) of globalPath.path">
-				<pre> / </pre>
-				<a @click="rewind($route.path, globalPath.path.length - (index+1))">{{ path }}</a>
+				<pre style="margin:0 2px"> / </pre>
+				<a @click="globalPath.stepBack(globalPath.path.length - (index+1))">{{ path }}</a>
 			</template>
 		</div>
 
@@ -63,7 +59,7 @@ function rewind(route: string, count: number) {
 .path {
 	margin: 0;
 	display: flex;
-    justify-content: center;
+    justify-content: left;
     align-items: center;
 	overflow: auto;
 }
