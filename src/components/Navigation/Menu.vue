@@ -13,10 +13,10 @@ defineProps<{
 <template>
 	<nav class="menu-container">
 		<template v-for="item of menuItems">
-			<a @click="$router.push(item.route)" class="menu-item">
+			<router-link :to="item.route" class="menu-item">
 				<div class="icon-container"><i :class="item.class"></i></div>
 				<p class="item-title">{{ item.title }}</p>
-			</a>
+			</router-link>
 		</template>
 	</nav>
 </template>

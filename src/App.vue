@@ -39,7 +39,12 @@ const items = ref([
 
 function isRequired(routeName: string): boolean {
 	let menus = ['/lessons', '/edit', '/viewer'];
-	return menus.includes(routeName);
+	for (let menu of menus){
+		if ( routeName.startsWith(menu) ){
+			return true
+		}
+	}
+	return false;
 }
 
 function sleep(ms: number) {
@@ -56,13 +61,14 @@ onUpdated(async () => {
 	// document.querySelector('#loader').style.opacity = '0';
 	// document.querySelector('#loader').style.display = 'none';
 });
+
 </script>
 
 <template>
 	<div id="content">
 		<Topbar id="topbar" v-if="isRequired($route.path)" class="no-print" />
 		<div id="router_par">
-			<RouterView id="router" :key="$route.hash" />
+			<RouterView id="router" :key="$route.href" />
 		</div>
 	</div>
 	<Menu class="no-print" id="menu" :menu-items="items"></Menu>

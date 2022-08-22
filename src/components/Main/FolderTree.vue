@@ -1,6 +1,5 @@
 <script lang="ts" setup>
-import { ref } from 'vue';
-import router from '@/router/index';
+import { onMounted,ref } from 'vue';
 
 import usePath from '@/composable/PathComposable';
 import useGithub from '@/composable/GithubComposable';
@@ -8,26 +7,25 @@ import { ItemKind, type ItemData, type TreeItem } from '@/types/Tree';
 
 const globalPath = usePath();
 const github = useGithub();
-const currentNode = ref<TreeItem>(github.getNodeFromPath(globalPath.path));
+
+
+const currentNode = ref<TreeItem>( github.getNodeFromPath( globalPath.path ) );
+console.log(currentNode)
 
 function getIcon(kind: ItemKind): string {
 	return kind === ItemKind.folder ? 'gg-folder' : 'gg-file';
 }
 
 function push(child: ItemData) {
+	let name = child.name
 	if (child.kind === ItemKind.file) {
-		router.push({
-			path: '/viewer',
-			query: {
-				folder: globalPath.getFullPath(),
-				file: child.name + '.md',
-			},
-		});
-		return;
+		name += ".md";
 	}
-	globalPath.path.push(child.name);
+
+	globalPath.stepForward(name)
 	currentNode.value = github.getNodeFromPath(globalPath.path);
 }
+
 </script>
 
 <template>

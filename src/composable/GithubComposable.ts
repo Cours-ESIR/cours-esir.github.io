@@ -22,6 +22,7 @@ function getNodeFromPath(path: string[]): TreeItem {
 		item = item?.children.find((el: { name: string }) => {
 			return el.name === part;
 		});
+
 	}
 	return item ?? root;
 }

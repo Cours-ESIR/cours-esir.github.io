@@ -10,7 +10,13 @@ const router = createRouter({
 		},
 		{
 			path: '/lessons',
-			name: 'lessons',
+			redirect: to => {
+				return { path: '/lessons/' }
+			  },
+		},
+		{
+			path: '/lessons/:path(.*)',
+			name: 'lessons_path',
 			component: () => import('@/views/LessonView.vue'),
 		},
 		{

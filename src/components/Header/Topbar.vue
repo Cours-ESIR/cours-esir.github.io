@@ -4,13 +4,7 @@ import usePath from '@/composable/PathComposable';
 const globalPath = usePath();
 
 function back(route: string) {
-	if (route === '/viewer') {
-		router.push({
-			path: '/lessons',
-		});
-	} else {
-		globalPath.path.pop();
-	}
+	globalPath.stepBack(1);
 }
 
 function share() {
@@ -22,8 +16,6 @@ function share() {
 
 function rewind(route: string, count: number) {
 	globalPath.stepBack(count);
-	if(route === '/lessons') return;
-	router.push('/lessons');
 }
 
 </script>
