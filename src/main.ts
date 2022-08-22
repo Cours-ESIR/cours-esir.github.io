@@ -2,6 +2,7 @@ import { createApp } from 'vue';
 import router from './router/index';
 import App from './App.vue';
 import useGithub from '@/composable/GithubComposable';
+useGithub();
 
 const app = createApp(App);
 
@@ -18,8 +19,6 @@ const appResize = () => {
 window.addEventListener('resize', appResize);
 
 appResize();
-
-useGithub();
 
 let css = [
 	'https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css',
