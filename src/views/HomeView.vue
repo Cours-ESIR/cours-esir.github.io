@@ -17,7 +17,7 @@
 			<li>
 				ils devront être écris en markdown ( pas de panique un éditeur
 				est disponible
-				<a href="https://cours-esir.github.io/editeur.html">ici</a> )
+				<a href="https://github.dev/Cours-ESIR/Cours">ici</a> )
 			</li>
 			<li>
 				être hiérarchisé par niveau puis par année ( exemple :
