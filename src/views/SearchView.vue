@@ -21,10 +21,7 @@ function filter() {
 
 function open_file(file: string): void {
 	router.push({
-		path: '/viewer',
-		query: {
-			filepath: file,
-		},
+		path: `/lessons/${file}`,
 	});
 }
 </script>
