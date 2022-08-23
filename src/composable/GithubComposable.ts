@@ -27,7 +27,7 @@ function getNodeFromPath(path: string[]): TreeItem {
 	return item ?? root;
 }
 
-(async () => {
+(async() => {
 	contributors.value = await GithubService.fetchContrib()
 	let data: RepositoryTree = await GithubService.fetchTree();
 
@@ -66,7 +66,7 @@ function getNodeFromPath(path: string[]): TreeItem {
 			}
 		}
 	}
-})();
+})()
 
 export default function () {
 	return {

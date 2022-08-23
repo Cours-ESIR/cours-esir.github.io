@@ -10,15 +10,13 @@ const list_filtered = ref<string[]>([]);
 
 function filter() {
 	let text = input.value.toUpperCase();
-	list_filtered.value = [];
 
 	if (text.length === 0) return;
 
-	for (let file of github.files) {
-		if (file.toUpperCase().includes(text)) {
-			list_filtered.value.push(file);
-		}
-	}
+	list_filtered.value = github.files.filter(file => {
+		return file.toUpperCase().includes(text)
+	});
+
 }
 
 function open_file(file: string): void {
