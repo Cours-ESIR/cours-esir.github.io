@@ -65,12 +65,10 @@ router.afterEach((to:{path:string}, from:{path:string}) => {
 	let toDepth = order[pathfrom]
   	let fromDepth = order[pathto]
 
-	console.log(pathfrom,pathto)
-	console.log(toDepth,fromDepth)
 
-	if (toDepth == toDepth){
-		let toDepth = to.path.split('/').length
-  		let fromDepth = from.path.split('/').length
+	if (fromDepth == toDepth){
+		toDepth = to.path.split('/').filter(v=>v!=="").length
+  		fromDepth = from.path.split('/').filter(v=>v!=="").length
 	}
 
   	to.meta.transitionName = toDepth < fromDepth ? 'slideL' : 'slideR'
