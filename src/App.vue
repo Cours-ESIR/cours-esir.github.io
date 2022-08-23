@@ -47,21 +47,6 @@ function isRequired(routeName: string): boolean {
 	return false;
 }
 
-function sleep(ms: number) {
-	return new Promise((resolve) => setTimeout(resolve, ms));
-}
-
-onUpdated(async () => {
-	let a = document.querySelector('#loader') as any;
-	if (a) {
-		a.style.opacity = '0';
-		await sleep(1000);
-		a.style.display = 'none';
-	}
-	// document.querySelector('#loader').style.opacity = '0';
-	// document.querySelector('#loader').style.display = 'none';
-});
-
 </script>
 
 <template>
