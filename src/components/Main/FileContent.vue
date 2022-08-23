@@ -48,7 +48,7 @@ markdownit
 })
 .use(mdemoji)
 .use(function underline(md) {
-	function renderEm(tokens, idx, opts, _, slf) {
+	function renderEm(tokens:any, idx:any, opts:any, _:any, slf:any) {
 		let token = tokens[idx];
 		if(token.markup === '_')
 			token.tag = 'u';

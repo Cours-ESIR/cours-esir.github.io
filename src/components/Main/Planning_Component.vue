@@ -1,16 +1,23 @@
 <script setup lang="ts">
 
+type event = {
+    start:number,
+    duration:number
+}[][]
+
 const props = defineProps<{
-	planning: [];
+	planning: event;
 }>();
 
 let hours : number[] = [
     6,7,8,9,10,11,12,13,14,15,16,17,18,19,20
 ]
 
+let last = hours.at(-1) || 24
+
 document.documentElement.style.setProperty(
 	'--hours',
-	`${hours.at(-1)-hours[0]}`
+	`${last-hours[0]}`
 );
 
 </script>

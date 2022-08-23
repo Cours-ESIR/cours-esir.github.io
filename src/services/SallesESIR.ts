@@ -1,6 +1,6 @@
-type dbArray = [
-	[any,any]
-];
+type dbArray = {
+	[salle:string]:{'error':string,'until':number,'state':boolean}
+};
 
 export default class sallesESIR {
 	public static readonly GITHUB_API_URL =

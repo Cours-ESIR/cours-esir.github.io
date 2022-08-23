@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { ref, onUpdated } from 'vue';
+import { ref } from 'vue';
 import { RouterView } from 'vue-router';
 import Menu from '@/components/Navigation/Menu.vue';
 import Topbar from '@/components/Header/Topbar.vue';
@@ -53,7 +53,7 @@ function isRequired(routeName: string): boolean {
 	<div id="content">
 		<Topbar id="topbar" v-if="isRequired($route.path)" class="no-print" />
 		<div id="router_par">
-			<RouterView id="router" :key="$route.href" />
+			<RouterView id="router" :key="$route.fullPath" />
 		</div>
 	</div>
 	<Menu class="no-print" id="menu" :menu-items="items"></Menu>

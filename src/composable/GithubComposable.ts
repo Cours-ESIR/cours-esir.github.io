@@ -9,12 +9,24 @@ const root = reactive<TreeItem>({
 	children: [],
 });
 
+type contribList = [
+	{
+		"path": string,
+		"mode": string,
+		"type": string,
+		"sha": string,
+		"url": string
+	}
+]
+
 const files = reactive<string[]>([]);
 const folders = reactive<string[]>([]);
-const contributors = reactive<any[]>([])
+const contributors = reactive<{value:contribList[]}>({
+	value:[]
+})
 
 function getContributors(){
-	return contributors
+	return contributors.value
 }
 
 function getNodeFromPath(path: string[]): TreeItem {
@@ -30,7 +42,6 @@ function getNodeFromPath(path: string[]): TreeItem {
 let load = (async() => {
 	contributors.value = await GithubService.fetchContrib()
 	let data: RepositoryTree = await GithubService.fetchTree();
-
 	for (let item of data.tree) {
 		let currentNode = root;
 		item.type === 'blob' ? files.push(item.path) : folders.push(item.path);

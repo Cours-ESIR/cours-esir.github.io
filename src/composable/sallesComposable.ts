@@ -6,14 +6,16 @@ type ClassRecord = {
 	[name: string]: { class: string ,time?: number };
 };
 
+type sallesData = {
+	[salle:string]:{'error':string,'until':number,'state':boolean}
+}
 
-
-async function get_salles(salles_data:ClassRecord,date:String=""): Promise<ClassRecord> {
+async function get_salles(salles_data:ClassRecord,date:string=""): Promise<ClassRecord> {
 	for (let salle in salles_data){
 
 		if ( typeof(salle) !== "string" ) {break}
 
-		let data = await SallesESIR.fetchSalles([salle],date)
+		let data:sallesData = await SallesESIR.fetchSalles([salle],date)
 
 		if (data[salle]['error']) {
 			salles_data[salle]['class'] = 'grey';

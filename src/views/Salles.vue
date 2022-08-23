@@ -46,7 +46,7 @@ let timestamp:number
 async function actualize() {
 
 	timestamp = new Date(date.value + " " + time.value).getTime();
-	let ntime:String = '&date=' + (timestamp).toString();
+	let ntime:string = '&date=' + (timestamp).toString();
 
 	salles.value = await sallesComposable().get_salles(salles.value,ntime)
 
@@ -56,11 +56,11 @@ onMounted(() => {
 	actualize();
 });
 
-function stringify_date(time:number) : string{
+function stringify_date(time:number|undefined) : string{
+	if (time == undefined) return "updating"
+
 	let date_theo = new Date(timestamp)
 	let date_time = new Date(time)
-
-	console.log(hour,minute)
 
 	const tomorrow = new Date(date_theo)
 	tomorrow.setDate(tomorrow.getDate() + 1)

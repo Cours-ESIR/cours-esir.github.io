@@ -4,8 +4,5 @@
 	"compilerOptions": {
 		"composite": true,
 		"types": ["node"],
-		"paths": {
-			"marked": ["node_modules/marked/marked.min.js"]
-		}
 	}
 }
