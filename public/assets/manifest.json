@@ -1,16 +1,30 @@
 {
-  "background_color": "#ffffff",
+
+  "description":"",
+  "screenshots": [],
+  "shortcuts": [
+    {
+      "name":"lessons",
+      "url":"#/lessons",
+      "description":"Les lessons"
+    },
+    {
+      "name":"salles",
+      "url":"#/salles",
+      "description":"Les salles"
+    }
+  ],
   "dir": "ltr",
   "display": "standalone",
-  "name": "cours-esir.github",
+  "name": "Cours ESIR",
+  "short_name": "Cours ESIR",
   "orientation": "any",
   "scope": "/",
-  "short_name": "cours-esir.github",
   "start_url": "/",
-  "theme_color": "#ffffff",
   "icons": [
     {
-      "src": "./esir.svg"
+      "src": "/esir.svg",
+      "sizes": "any"
     }
   ]
 }

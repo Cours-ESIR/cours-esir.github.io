@@ -52,19 +52,16 @@
 	}
 }
 
-@media screen and (min-width:1200px){
-	::-webkit-scrollbar{
-		width:12px;
-		height:12px;
-	}
-	
-	::-webkit-scrollbar-thumb{
-		border-radius:16px;
-		border:4px solid transparent;
-		background-clip:content-box;
-		background-color: var(--text);
-	}
-	
+::-webkit-scrollbar{
+	width:12px;
+	height:12px;
+}
+
+::-webkit-scrollbar-thumb{
+	border-radius:16px;
+	border:4px solid transparent;
+	background-clip:content-box;
+	background-color: var(--text);
 }
 
 html,body{
