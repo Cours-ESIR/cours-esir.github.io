@@ -4,8 +4,10 @@ import App from './App.vue';
 import useGithub from '@/composable/GithubComposable';
 
 (async() => {
-
+	
 	await useGithub().load;
+
+
 
 	const app = createApp(App);
 
