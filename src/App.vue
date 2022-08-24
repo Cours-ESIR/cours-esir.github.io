@@ -71,7 +71,7 @@ router.afterEach((to:{path:string}, from:{path:string}) => {
   		fromDepth = from.path.split('/').filter(v=>v!=="").length
 	}
 
-  	to.meta.transitionName = toDepth < fromDepth ? 'slideL' : 'slideR'
+  	to.meta.transitionName = toDepth < fromDepth ? 'slideR' : 'slideL'
 })
 
 </script>
