@@ -1,55 +1,51 @@
 <script setup lang="ts">
-
 type event = {
     start:number,
     duration:number
-}[][]
+}[][];
 
-const props = defineProps<{
+defineProps<{
 	planning: event;
 }>();
 
 let hours : number[] = [
     6,7,8,9,10,11,12,13,14,15,16,17,18,19,20
-]
+];
 
-let last = hours.at(-1) || 24
+let last = hours.at(-1) || 24;
 
 document.documentElement.style.setProperty(
 	'--hours',
 	`${last-hours[0]}`
 );
-
 </script>
 
-
 <template>
-
-        <div-planning>
-            <rowheader>
-                <column>Lundi</column>
-                <column>Mardi</column>
-                <column>Mercredi</column>
-                <column>Jeudi</column>
-                <column>Vendredi</column>
-                <column>Samedi</column>
-                <column>Dimanche</column>
-            </rowheader>
-            <rowbody>
-                <column class="events-list" v-for="day of planning">
-                    <div v-for="event of day" :style="{top:`calc( 50px *${event.start-hours[0]})`,height: `calc( 50px *${event.duration})`}"></div>
-                </column>
-            </rowbody>
-            <row-legend>
-                <div class="lines" v-for="y of hours" :style="{top:`calc( 50px *${y-hours[0]})`}">
-                    <span class="text">{{y%24}}h00</span>
-                    <span class="line"></span>
-                </div>
-            </row-legend>
-        </div-planning>
+    <div-planning>
+        <rowheader>
+            <column>Lundi</column>
+            <column>Mardi</column>
+            <column>Mercredi</column>
+            <column>Jeudi</column>
+            <column>Vendredi</column>
+            <column>Samedi</column>
+            <column>Dimanche</column>
+        </rowheader>
+        <rowbody>
+            <column class="events-list" v-for="day of planning">
+                <div v-for="event of day" :style="{top:`calc( 50px *${event.start-hours[0]})`,height: `calc( 50px *${event.duration})`}"></div>
+            </column>
+        </rowbody>
+        <row-legend>
+            <div class="lines" v-for="y of hours" :style="{top:`calc( 50px *${y-hours[0]})`}">
+                <span class="text">{{y%24}}h00</span>
+                <span class="line"></span>
+            </div>
+        </row-legend>
+    </div-planning>
 </template>
 
-<style scoped>
+<style>
 
     div-planning{
         width:100%;

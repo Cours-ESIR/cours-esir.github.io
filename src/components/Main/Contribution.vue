@@ -1,14 +1,13 @@
 <script lang="ts" setup>
 
-import useGithub from '@/composable/GithubComposable';
-import {ref,onMounted} from "vue"
+import useGithub, { type contribList } from '@/composable/GithubComposable';
+import { ref, onMounted } from 'vue';
 
-let data = ref()
+let data = ref<contribList[]>([]);
 
 onMounted( async () => {
-    data.value = useGithub().getContributors()
-})
-
+    data.value = useGithub().getContributors();
+});
 </script> 
 
 <template>

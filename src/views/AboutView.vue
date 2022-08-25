@@ -1,5 +1,6 @@
 <script lang="ts" setup>
-import Contribution from "../components/Main/Contribution.vue";</script>
+import Contribution from "../components/Main/Contribution.vue";
+</script>
 
 <template>
 	<div>
@@ -38,5 +39,3 @@ import Contribution from "../components/Main/Contribution.vue";</script>
 		<Contribution/>
 	</div>
 </template>
-
-<style scoped></style>

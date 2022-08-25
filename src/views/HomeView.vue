@@ -1,5 +1,3 @@
-<script lang="ts" setup></script>
-
 <template>
 	<div>
 		<h1>📖 Cours-ESIR</h1>
@@ -15,9 +13,7 @@
 		<p>Ces cours devront suivre quelques règles :</p>
 		<ul>
 			<li>
-				ils devront être écris en markdown ( pas de panique un éditeur
-				est disponible
-				<a href="https://github.dev/Cours-ESIR/Cours">ici</a> )
+				ils devront être écris en markdown ( vous pouvez trouvez les règles de rédaction ici: <a href="https://www.markdownguide.org/cheat-sheet/">markdown_rules</a> )
 			</li>
 			<li>
 				être hiérarchisé par niveau puis par année ( exemple :
@@ -68,5 +64,3 @@
 		</table>
 	</div>
 </template>
-
-<style scoped></style>

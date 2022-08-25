@@ -11,17 +11,17 @@ function format(num: number) {
 	return str;
 }
 
-let ndate = new Date();
-let year = ndate.getFullYear();
-let month = format(ndate.getMonth() + 1);
-let day = format(ndate.getDate());
-let hour = format(ndate.getHours());
-let minute = format(ndate.getMinutes());
+let today = new Date();
+
+let day = format(today.getDate());
+let month = format(today.getMonth() + 1);
+let year = today.getFullYear();
+
+let hour = format(today.getHours());
+let minute = format(today.getMinutes());
 
 let date = ref(year + '-' + month + '-' + day);
 let time = ref(hour + ':' + minute);
-
-
 
 type ClassRecord = {
 	[name: string]: { class: string , time?: number };
@@ -41,40 +41,29 @@ let salles = ref<ClassRecord>({
 	'salle-104': { class: 'grey' },
 });
 
-let timestamp:number
-
 async function actualize() {
-
-	timestamp = new Date(date.value + " " + time.value).getTime();
-	let ntime:string = '&date=' + (timestamp).toString();
-
-	salles.value = await sallesComposable().get_salles(salles.value,ntime)
-
+	salles.value = await sallesComposable().get_salles(salles.value, `&date=${today.getTime()}`);
 }
 
 onMounted(() => {
 	actualize();
 });
 
-function stringify_date(time:number|undefined) : string{
-	if (time == undefined) return "updating"
+function stringify_date(time: number|undefined) : string{
+	if (time == undefined) return 'updating';
 
-	let date_theo = new Date(timestamp)
-	let date_time = new Date(time)
+	let date_theo = today;
+	let date_time = new Date(time);
 
-	const tomorrow = new Date(date_theo)
-	tomorrow.setDate(tomorrow.getDate() + 1)
+	const tomorrow = new Date(date_theo.getDate() + 1);
 
 	if ( date_theo.getDate() === date_time.getDate() && date_theo.getMonth() === date_time.getMonth()){
-		return `Jusqu'à ${date_time.getHours()}:${date_time.getMinutes()}`
+		return `Jusqu'à ${date_time.getHours()}:${date_time.getMinutes()}`;
+	} else if ( tomorrow.getDate() === date_time.getDate() && tomorrow.getMonth() === date_time.getMonth()){
+		return `Jusqu'à demain ${date_time.getHours()}:${date_time.getMinutes()}`;
+	} else {
+		return `Jusqu'au ${date_time.getDate()}/${date_time.getMonth()+1}`;
 	}
-	else if ( tomorrow.getDate() === date_time.getDate() && tomorrow.getMonth() === date_time.getMonth()){
-		return `Jusqu'à demain ${date_time.getHours()}:${date_time.getMinutes()}`
-	}
-	else {
-		return `Jusqu'au ${date_time.getDate()}/${date_time.getMonth()+1}`
-	}
-
 }
 
 </script>

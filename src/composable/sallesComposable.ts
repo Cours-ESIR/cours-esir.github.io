@@ -1,16 +1,18 @@
-import { reactive } from 'vue';
 import SallesESIR from '@/services/SallesESIR';
-
 
 type ClassRecord = {
 	[name: string]: { class: string ,time?: number };
 };
 
 type sallesData = {
-	[salle:string]:{'error':string,'until':number,'state':boolean}
+	[salle: string]: {
+		'error': string,
+		'until': number,
+		'state': boolean
+	}
 }
 
-async function get_salles(salles_data:ClassRecord,date:string=""): Promise<ClassRecord> {
+async function get_salles(salles_data: ClassRecord, date: string = ''): Promise<ClassRecord> {
 	for (let salle in salles_data){
 
 		if ( typeof(salle) !== "string" ) {break}

@@ -9,24 +9,24 @@ const root = reactive<TreeItem>({
 	children: [],
 });
 
-type contribList = [
-	{
-		"path": string,
-		"mode": string,
-		"type": string,
-		"sha": string,
-		"url": string
-	}
-]
+export type contribList = {
+	path: string,
+	mode: string,
+	type: string,
+	sha: string,
+	url: string,
+	login: string,
+	avatar_url: string;
+};
 
 const files = reactive<string[]>([]);
 const folders = reactive<string[]>([]);
 const contributors = reactive<{value:contribList[]}>({
-	value:[]
-})
+	value: []
+});
 
-function getContributors(){
-	return contributors.value
+function getContributors(): contribList[] {
+	return contributors.value;
 }
 
 function getNodeFromPath(path: string[]): TreeItem {

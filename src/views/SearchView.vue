@@ -14,7 +14,7 @@ function filter() {
 	if (text.length === 0) return;
 
 	list_filtered.value = github.files.filter(file => {
-		return file.toUpperCase().includes(text)
+		return file.toUpperCase().includes(text);
 	});
 
 }

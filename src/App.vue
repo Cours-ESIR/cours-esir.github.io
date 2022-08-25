@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { ref } from 'vue';
-import { RouterView } from 'vue-router';
+import { RouterView, type RouteMeta } from 'vue-router';
 import Menu from '@/components/Navigation/Menu.vue';
 import Topbar from '@/components/Header/Topbar.vue';
 import router from '@/router/index';
@@ -50,28 +50,28 @@ function isRequired(routeName: string): boolean {
 
 
 
-router.afterEach((to:{path:string}, from:{path:string}) => {
-	let order = {
+router.afterEach((to: {path:string, meta: RouteMeta }, from: {path:string} ) => {
+	let order: { [name: string]: number } = {
 		"home":0,
 		"lessons":1,
 		"search":2,
 		"salles":3,
 		"about":4,
-	}
+	};
 
-	let pathfrom = (from.path == "/") ? "home" : from.path.split('/')[1]
-	let pathto = (to.path == "/") ? "home" : to.path.split('/')[1]
+	let pathfrom = (from.path == "/") ? "home" : from.path.split('/')[1];
+	let pathto = (to.path == "/") ? "home" : to.path.split('/')[1];
 
-	let toDepth = order[pathfrom]
-  	let fromDepth = order[pathto]
+	let toDepth = order[pathfrom];
+  	let fromDepth = order[pathto];
 
 
 	if (fromDepth == toDepth){
-		toDepth = from.path.split('/').filter(v=>v!=="").length
-  		fromDepth = to.path.split('/').filter(v=>v!=="").length
+		toDepth = from.path.split('/').filter(v=>v!=="").length;
+  		fromDepth = to.path.split('/').filter(v=>v!=="").length;
 	}
 
-  	to.meta.transitionName = toDepth < fromDepth ? 'slideR' : 'slideL'
+  	to.meta.transitionName = toDepth < fromDepth ? 'slideR' : 'slideL';
 })
 
 </script>
@@ -82,7 +82,7 @@ router.afterEach((to:{path:string}, from:{path:string}) => {
 
 			<Topbar id="topbar" v-if="isRequired($route.path)" class="no-print" />
 			<div id="router_par">
-				<Transition :name="route.meta.transitionName">
+				<Transition :name="route.meta.transitionName as string">
 					<component id="router" :key="$route.fullPath" :is="Component" />
 				</Transition>
 			</div>

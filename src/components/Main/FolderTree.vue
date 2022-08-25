@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { onMounted,ref } from 'vue';
+import { ref } from 'vue';
 
 import usePath from '@/composable/PathComposable';
 import useGithub from '@/composable/GithubComposable';
@@ -10,19 +10,17 @@ function getIcon(kind: ItemKind): string {
 }
 
 function push(child: ItemData) {
-	let name = child.name
+	let name = child.name;
 	if (child.kind === ItemKind.file) {
 		name += ".md";
 	}
-
-	globalPath.stepForward(name)
+	globalPath.stepForward(name);
 	currentNode.value = github.getNodeFromPath(globalPath.path);
 }
 
 const globalPath = usePath();
 const github = useGithub();
-const currentNode = ref<TreeItem>( github.getNodeFromPath( globalPath.path ) )
-
+const currentNode = ref<TreeItem>(github.getNodeFromPath(globalPath.path));
 </script>
 
 <template>

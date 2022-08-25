@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-
 import FolderTree from '@/components/Main/FolderTree.vue';
 import usePath from '@/composable/PathComposable';
 import ViewerView from '@/components/Main/ViewerView.vue';
@@ -7,7 +6,6 @@ import ViewerView from '@/components/Main/ViewerView.vue';
 const path = usePath();
 
 path.loadPath()
-
 </script>
 
 <template>
