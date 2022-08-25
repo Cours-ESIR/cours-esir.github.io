@@ -30,9 +30,11 @@ function filter() {
 			<input v-model="input" @input="filter" />
 		</div>
 		<template v-for="file of list_filtered">
-			<router-link style="cursor:pointer" :to='"/lessons/"+file' class="menu-item">
-				{{ file }}
-			</router-link>
+			<p>
+				<router-link style="cursor:pointer" :to='"/lessons/"+file' class="menu-item">
+					{{ file }}
+				</router-link>
+			</p>
 		</template>
 	</main>
 </template>
