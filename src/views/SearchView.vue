@@ -19,11 +19,6 @@ function filter() {
 
 }
 
-function open_file(file: string): void {
-	router.push({
-		path: `/lessons/${file}`,
-	});
-}
 </script>
 
 <template>
@@ -35,7 +30,9 @@ function open_file(file: string): void {
 			<input v-model="input" @input="filter" />
 		</div>
 		<template v-for="file of list_filtered">
-			<p style="cursor:pointer" @click="open_file(file)">{{ file }}</p>
+			<router-link style="cursor:pointer" :to='"/lessons/"+file' class="menu-item">
+				{{ file }}
+			</router-link>
 		</template>
 	</main>
 </template>

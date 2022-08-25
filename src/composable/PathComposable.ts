@@ -2,7 +2,6 @@ import { reactive } from 'vue';
 import router from '@/router/index';
 
 let path = reactive<string[]>([]);
-let ignite = false
 
 export default function () {
 	const getFullPath = () => {
@@ -10,7 +9,8 @@ export default function () {
 	};
 
 	const loadPath = () => {
-		if (ignite) return
+
+		stepBack(path.length)
 
 		let path_str = router.currentRoute.value.params.path
 		if ( typeof(path_str) === "string"){
@@ -24,8 +24,6 @@ export default function () {
 		for (let item of path_str.split("/") ) {
 			if (item !=="") path.push(item)
 		}
-		
-		ignite = true
 	}
 
 	const stepForward = ( child : string ) => {

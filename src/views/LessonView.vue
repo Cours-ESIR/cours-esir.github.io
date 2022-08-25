@@ -3,9 +3,19 @@ import FolderTree from '@/components/Main/FolderTree.vue';
 import usePath from '@/composable/PathComposable';
 import ViewerView from '@/components/Main/ViewerView.vue';
 
+import router from "@/router"
+
 const path = usePath();
 
-path.loadPath()
+
+
+let prev = router.options.history.state.back?.toString() ?? ""
+
+if (!prev.startsWith("/lessons")){
+	path.loadPath()
+}
+
+
 </script>
 
 <template>
