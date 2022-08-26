@@ -10,14 +10,15 @@ export default function () {
 
 	const loadPath = () => {
 
-		stepBack(path.length)
+		for( let i in path){
+			path.pop();
+		}
 
 		let path_str = router.currentRoute.value.params.path
 		if ( typeof(path_str) === "string"){
 			path_str = path_str.replaceAll("+"," ")
 		}
 		else{
-			console.trace(path_str)
 			path_str = path_str.join("/").replaceAll("+"," ")
 		}
 

@@ -7,13 +7,12 @@ import router from "@/router"
 
 const path = usePath();
 
-
-
 let prev = router.options.history.state.back?.toString() ?? ""
 
-if (!prev.startsWith("/lessons")){
+if (!prev.startsWith("/lessons") || path.getFullPath() === ""){
 	path.loadPath()
 }
+
 
 
 </script>
