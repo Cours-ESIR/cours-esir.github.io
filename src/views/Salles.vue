@@ -1,8 +1,6 @@
 <script lang="ts" setup>
 import { onMounted, ref } from 'vue';
-
 import sallesComposable from '@/composable/sallesComposable';
-
 function format(num: number) {
 	let str = `${num}`;
 	if (str.length === 1) {
@@ -10,23 +8,17 @@ function format(num: number) {
 	}
 	return str;
 }
-
-let today = new Date();
-
-let day = format(today.getDate());
-let month = format(today.getMonth() + 1);
-let year = today.getFullYear();
-
-let hour = format(today.getHours());
-let minute = format(today.getMinutes());
-
+let ndate = new Date();
+let year = ndate.getFullYear();
+let month = format(ndate.getMonth() + 1);
+let day = format(ndate.getDate());
+let hour = format(ndate.getHours());
+let minute = format(ndate.getMinutes());
 let date = ref(year + '-' + month + '-' + day);
 let time = ref(hour + ':' + minute);
-
 type ClassRecord = {
 	[name: string]: { class: string , time?: number };
 };
-
 let salles = ref<ClassRecord>({
 	'amphi-l': { class: 'grey' },
 	'amphi-m': { class: 'grey' },
@@ -40,32 +32,31 @@ let salles = ref<ClassRecord>({
 	'salle-103': { class: 'grey' },
 	'salle-104': { class: 'grey' },
 });
-
+let timestamp:number
 async function actualize() {
-	salles.value = await sallesComposable().get_salles(salles.value, `&date=${today.getTime()}`);
+	timestamp = new Date(date.value + " " + time.value).getTime();
+	let ntime:string = '&date=' + (timestamp).toString();
+	salles.value = await sallesComposable().get_salles(salles.value,ntime)
 }
-
 onMounted(() => {
 	actualize();
 });
-
-function stringify_date(time: number|undefined) : string{
-	if (time == undefined) return 'updating';
-
-	let date_theo = today;
-	let date_time = new Date(time);
-
-	const tomorrow = new Date(date_theo.getDate() + 1);
-
+function stringify_date(time:number|undefined) : string{
+	if (time == undefined) return "updating"
+	let date_theo = new Date(timestamp)
+	let date_time = new Date(time)
+	const tomorrow = new Date(date_theo)
+	tomorrow.setDate(tomorrow.getDate() + 1)
 	if ( date_theo.getDate() === date_time.getDate() && date_theo.getMonth() === date_time.getMonth()){
-		return `Jusqu'à ${date_time.getHours()}:${date_time.getMinutes()}`;
-	} else if ( tomorrow.getDate() === date_time.getDate() && tomorrow.getMonth() === date_time.getMonth()){
-		return `Jusqu'à demain ${date_time.getHours()}:${date_time.getMinutes()}`;
-	} else {
-		return `Jusqu'au ${date_time.getDate()}/${date_time.getMonth()+1}`;
+		return `Jusqu'à ${date_time.getHours()}:${date_time.getMinutes()}`
+	}
+	else if ( tomorrow.getDate() === date_time.getDate() && tomorrow.getMonth() === date_time.getMonth()){
+		return `Jusqu'à demain ${date_time.getHours()}:${date_time.getMinutes()}`
+	}
+	else {
+		return `Jusqu'au ${date_time.getDate()}/${date_time.getMonth()+1}`
 	}
 }
-
 </script>
 
 <template>
@@ -96,7 +87,6 @@ function stringify_date(time: number|undefined) : string{
 	overflow: hidden;
 	border: 3px solid var(--text);
 }
-
 .input > * {
 	background: unset;
 	border: unset;
@@ -109,7 +99,6 @@ function stringify_date(time: number|undefined) : string{
 	display: block;
 	position: relative;
 }
-
 .input > *::-webkit-calendar-picker-indicator {
 	top: 0;
 	cursor: pointer;
@@ -118,18 +107,14 @@ function stringify_date(time: number|undefined) : string{
 	opacity: 0;
 	position: absolute;
 }
-
 .grid {
 	display: grid;
 	grid-gap: 20px;
 	grid-auto-rows: minmax(100px, 100px);
-
 	grid-template-columns: repeat(3, calc((100% - 2 * 20px) / 3));
-
 	overflow: auto;
 	height: 100%;
 }
-
 .box {
 	border-radius: 1.5rem;
 	padding: 12px;
@@ -137,19 +122,15 @@ function stringify_date(time: number|undefined) : string{
 	place-items: center;
 	transition: 0.3s;
 }
-
 .grey {
 	border: solid 3px lightgrey;
 }
-
 .green {
 	border: solid 3px var(--green);
 }
-
 .red {
 	border: solid 3px var(--red);
 }
-
 @media screen and (max-width: 500px) {
 	.grid {
 		grid-template-columns: repeat(1, 100%);
