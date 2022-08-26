@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+import {ref} from 'vue'
+
 type MenuItem = {
 	title: string;
 	route: string;
@@ -8,6 +10,20 @@ type MenuItem = {
 defineProps<{
 	menuItems: MenuItem[];
 }>();
+
+let show = false
+
+function invert_show() {
+	show=!show
+
+	if (show) {
+		document.querySelector(".menu-container")?.classList.add("hide")
+	}
+	else  {
+		document.querySelector(".menu-container")?.classList.remove("hide")
+	}
+}
+
 </script>
 
 <template>
@@ -18,11 +34,13 @@ defineProps<{
 				<p class="item-title">{{ item.title }}</p>
 			</router-link>
 		</template>
+		<div id="show_btn" v-on:click="invert_show()"><i class="gg-chevron-left"></i></div>
 	</nav>
 </template>
 
 <style scoped>
 .menu-container {
+	transition: 0.3s;
 	color: var(--text);
 
 	display: grid;
@@ -54,7 +72,34 @@ defineProps<{
 	fill: var(--red);
 }
 
+.hide{
+	margin-left:-200px;
+}
+
+.hide > #show_btn > i{
+	transform: rotate(180deg);
+}
+
+#show_btn{
+	transition: 0.3s;
+	position: absolute;
+	top:50%;
+	margin-left:200px;
+	transform:translateY(-50%);
+	padding: 15px 5px;
+	background: var(--compl);
+	border-radius: 0 1em 1em 0;
+}
+
 @media screen and (max-width: 1200px) {
+	#show_btn{
+		display: none;
+	}
+
+	.hide{
+		margin-left: unset;
+	}
+
 	.menu-container {
 		grid-auto-flow: column;
 	}
