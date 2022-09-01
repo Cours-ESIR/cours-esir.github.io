@@ -10,9 +10,7 @@ export default function () {
 
 	const loadPath = () => {
 
-		for( let i in path){
-			path.pop();
-		}
+		path.splice(0)
 
 		let path_str = router.currentRoute.value.params.path
 		if ( typeof(path_str) === "string"){

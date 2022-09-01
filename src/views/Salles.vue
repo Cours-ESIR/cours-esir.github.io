@@ -47,7 +47,10 @@ function stringify_date(time:number|undefined) : string{
 	let date_time = new Date(time)
 	const tomorrow = new Date(date_theo)
 	tomorrow.setDate(tomorrow.getDate() + 1)
-	if ( date_theo.getDate() === date_time.getDate() && date_theo.getMonth() === date_time.getMonth()){
+	if (time === 0) {
+		return `La date n'est pas incluse dans ce planning`
+	}
+	else if ( date_theo.getDate() === date_time.getDate() && date_theo.getMonth() === date_time.getMonth()){
 		return `Jusqu'à ${date_time.getHours()}:${date_time.getMinutes()}`
 	}
 	else if ( tomorrow.getDate() === date_time.getDate() && tomorrow.getMonth() === date_time.getMonth()){

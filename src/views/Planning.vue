@@ -1,15 +1,22 @@
 <script lang="ts" setup>
 import CPlanning from "../components/Main/Planning_Component.vue";
+import sallesComposable from '@/composable/sallesComposable';
+import {ref} from "vue"
 
-let planning = [
-    [{"start":15.5,"duration":0.75}],
-    [{"start":15.5,"duration":0.75},{"start":9,"duration":0.5}],
-    [{"start":15.5,"duration":0.75}],
-    [{"start":15.5,"duration":0.75}],
-    [{"start":15.5,"duration":0.75}],
-    [{"start":15.5,"duration":0.75}],
-    [{"start":15.5,"duration":0.75}],
-];
+let planning = ref([
+
+]);
+
+let salle = "salle-001";
+let date:number = (new Date()).getTime();
+(async () => {
+
+    for ( let i=0;i<5;i++){
+        let time = `&date=${date+24*60*60*1000}`
+        planning.value.push( await sallesComposable().get_events(salle,time) )
+    }
+
+})()
 
 </script>
 

@@ -1,6 +1,5 @@
 <script lang="ts" setup>
 import { ref } from 'vue';
-import router from '@/router/index';
 import useGithub from '@/composable/GithubComposable';
 
 const github = useGithub();

@@ -13,6 +13,8 @@ if (!prev.startsWith("/lessons") || path.getFullPath() === ""){
 	path.loadPath()
 }
 
+console.log(router.currentRoute.value.params)
+
 
 
 </script>

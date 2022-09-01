@@ -1,7 +1,7 @@
 <script setup lang="ts">
 type event = {
     start:number,
-    duration:number
+    end:number
 }[][];
 
 defineProps<{
@@ -33,7 +33,7 @@ document.documentElement.style.setProperty(
         </rowheader>
         <rowbody>
             <column class="events-list" v-for="day of planning">
-                <div v-for="event of day" :style="{top:`calc( 50px *${event.start-hours[0]})`,height: `calc( 50px *${event.duration})`}"></div>
+                <div v-for="event of day" :style="{top:`calc( 50px *${event.start-hours[0]})`,height: `calc( 50px *${event.end-event.start})`}"></div>
             </column>
         </rowbody>
         <row-legend>

@@ -12,6 +12,12 @@ type sallesData = {
 	}
 }
 
+async function get_events(salle:string,date: string = ''): Promise<any>{
+	let data = await SallesESIR.fetchEvents(salle,date);
+
+	return data[salle]
+}
+
 async function get_salles(salles_data: ClassRecord, date: string = ''): Promise<ClassRecord> {
 	for (let salle in salles_data){
 
@@ -36,5 +42,6 @@ async function get_salles(salles_data: ClassRecord, date: string = ''): Promise<
 export default function () {
 	return {
 		get_salles,
+		get_events,
 	};
 }
