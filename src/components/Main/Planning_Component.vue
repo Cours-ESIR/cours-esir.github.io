@@ -65,7 +65,8 @@ function show_popup(text:string){
 <style>
 
     div-planning{
-        width:100%;
+        margin-left: 70px !important;
+        width:calc(100% - 70px);
         display: grid;
         position:relative;
     }
