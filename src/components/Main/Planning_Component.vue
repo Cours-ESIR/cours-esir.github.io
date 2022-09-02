@@ -1,15 +1,16 @@
 <script setup lang="ts">
+ 
 type event = {
     start:number,
     end:number
 }[][];
 
-defineProps<{
+let props = defineProps<{
 	planning: event;
 }>();
 
 let hours : number[] = [
-    6,7,8,9,10,11,12,13,14,15,16,17,18,19,20
+    7,8,9,10,11,12,13,14,15,16,17,18,19
 ];
 
 let last = hours.at(-1) || 24;
@@ -18,6 +19,14 @@ document.documentElement.style.setProperty(
 	'--hours',
 	`${last-hours[0]}`
 );
+
+
+function get_time(timestamp:number) : number{
+    let date = new Date(timestamp)
+
+    return date.getHours() + date.getMinutes() / 60
+}
+
 </script>
 
 <template>
@@ -33,7 +42,10 @@ document.documentElement.style.setProperty(
         </rowheader>
         <rowbody>
             <column class="events-list" v-for="day of planning">
-                <div v-for="event of day" :style="{top:`calc( 50px *${event.start-hours[0]})`,height: `calc( 50px *${event.end-event.start})`}"></div>
+                
+                <div v-for="event of day" :style="{top:`calc( 50px *${get_time(event.start)-hours[0]})`,height: `calc( 50px *${get_time(event.end)-get_time(event.start)})`}">
+                    {{event.summary}}
+                </div>
             </column>
         </rowbody>
         <row-legend>

@@ -27,7 +27,7 @@ async function get_salles(salles_data: ClassRecord, date: string = ''): Promise<
 
 		if (data[salle]['error']) {
 			salles_data[salle]['class'] = 'grey';
-			salles_data[salle]['time'] = 0
+			salles_data[salle]['time'] = parseInt(date.split("=")[1])
 		} else if (data[salle]['state']) {
 			salles_data[salle]['class'] = 'green';
 			salles_data[salle]['time'] = data[salle]['until']

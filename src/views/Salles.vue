@@ -41,13 +41,13 @@ async function actualize() {
 onMounted(() => {
 	actualize();
 });
-function stringify_date(time:number|undefined) : string{
+function stringify_date(time:number|undefined,classe:string) : string{
 	if (time == undefined) return "updating"
 	let date_theo = new Date(timestamp)
 	let date_time = new Date(time)
 	const tomorrow = new Date(date_theo)
 	tomorrow.setDate(tomorrow.getDate() + 1)
-	if (time === 0) {
+	if (classe === "grey") {
 		return `La date n'est pas incluse dans ce planning`
 	}
 	else if ( date_theo.getDate() === date_time.getDate() && date_theo.getMonth() === date_time.getMonth()){
@@ -71,11 +71,20 @@ function stringify_date(time:number|undefined) : string{
 		</div>
 		<main class="grid">
 			<template v-for="(value, name) of salles">
-				<div :class="value.class + ' box'">
-					{{ name }}
-					<br>
-					{{ stringify_date(value.time) }}
-				</div>
+				<template v-if="value.class !== 'grey'">
+					<router-link :class="value.class + ' box'" :to="'/planning/'+name+'/'+value.time">
+						{{ name }}
+						<br>
+						{{ stringify_date(value.time,value.class) }}
+					</router-link>
+				</template>
+				<template v-else>
+					<div :class="value.class + ' box'">
+						{{ name }}
+						<br>
+						{{ stringify_date(value.time,value.class) }}
+					</div>
+				</template>
 			</template>
 		</main>
 	</div>

@@ -40,7 +40,7 @@ const router = createRouter({
 			component: () => import('@/views/AboutView.vue'),
 		},
 		{
-			path: '/Planning',
+			path: '/planning/:salle/:date',
 			name: 'planning',
 			component: () => import('@/views/Planning.vue'),
 		},
