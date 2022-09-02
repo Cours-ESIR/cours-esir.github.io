@@ -4,6 +4,7 @@ import { RouterView, type RouteMeta } from 'vue-router';
 import Menu from '@/components/Navigation/Menu.vue';
 import Topbar from '@/components/Header/Topbar.vue';
 import router from '@/router/index';
+import Popup from './components/Main/Popup.vue';
 
 const items = ref([
 	{
@@ -77,6 +78,7 @@ router.afterEach((to: {path:string, meta: RouteMeta }, from: {path:string} ) => 
 </script>
 
 <template>
+	<Popup id="popup"></Popup>
 	<div id="content">
 		<router-view v-slot="{ Component, route }">
 

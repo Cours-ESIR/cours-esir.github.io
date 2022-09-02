@@ -27,6 +27,11 @@ function get_time(timestamp:number) : number{
     return date.getHours() + date.getMinutes() / 60
 }
 
+function show_popup(text:string){
+    document.querySelector("#popup > button").focus()
+    document.querySelector("#popup > content").innerHTML = text
+}
+
 </script>
 
 <template>
@@ -43,8 +48,8 @@ function get_time(timestamp:number) : number{
         <rowbody>
             <column class="events-list" v-for="day of planning">
                 
-                <div v-for="event of day" :style="{top:`calc( 50px *${get_time(event.start)-hours[0]})`,height: `calc( 50px *${get_time(event.end)-get_time(event.start)})`}">
-                    {{event.summary}}
+                <div @click="show_popup(event.description.replaceAll('\\n','<br>'))"  v-for="event of day" :style="{'font-size':'8px',top:`calc( 50px *${get_time(event.start)-hours[0]})`,height: `calc( 50px *${get_time(event.end)-get_time(event.start)})`}">
+
                 </div>
             </column>
         </rowbody>

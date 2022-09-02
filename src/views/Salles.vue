@@ -48,7 +48,7 @@ function stringify_date(time:number|undefined,classe:string) : string{
 	const tomorrow = new Date(date_theo)
 	tomorrow.setDate(tomorrow.getDate() + 1)
 	if (classe === "grey") {
-		return `La date n'est pas incluse dans ce planning`
+		return `Indisponible`
 	}
 	else if ( date_theo.getDate() === date_time.getDate() && date_theo.getMonth() === date_time.getMonth()){
 		return `Jusqu'à ${date_time.getHours()}:${date_time.getMinutes()}`
@@ -139,10 +139,17 @@ function stringify_date(time:number|undefined,classe:string) : string{
 }
 .green {
 	border: solid 3px var(--green);
+	color:var(--green);
 }
 .red {
 	border: solid 3px var(--red);
+	color:var(--red);
 }
+
+.red:hover,.green:hover {
+	color:var(--blue);
+}
+
 @media screen and (max-width: 500px) {
 	.grid {
 		grid-template-columns: repeat(1, 100%);
