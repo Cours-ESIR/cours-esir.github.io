@@ -8,6 +8,8 @@
 		<p>
 			La création, modification et suppression des cours se fera par le
 			biais de <a href="https://github.com/Cours-ESIR/Cours">github</a>.
+			<br/><br/>
+			Vous pouvez aussi rejoindre notre <a href="https://discord.gg/92PsuUCbT2">Discord</a>
 		</p>
 		<h1 id="règles">⚠️ Règles</h1>
 		<p>Ces cours devront suivre quelques règles :</p>
