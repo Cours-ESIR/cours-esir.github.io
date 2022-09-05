@@ -26,7 +26,7 @@ const currentNode = ref<TreeItem>(github.getNodeFromPath(globalPath.path));
 <template>
 	<main class="folder-grid">
 		<template v-for="child in currentNode.children">
-			<div @click="push(child)" :class="ItemKind[child.kind]">
+			<div @click="push(child)" :class="ItemKind[child.kind]" v-if="child.url === undefined || child.url.endsWith('.md')">
 				<i :class="getIcon(child.kind)"></i>
 				<p class="node-text">{{ child.name }}</p>
 			</div>
