@@ -1,11 +1,14 @@
 <script lang="ts" setup>
 import Contribution from "../components/Main/Contribution.vue";
+
+import { version } from "../../package.json"
+
 </script>
 
 <template>
 	<div>
 		<h1>Responsabilité</h1>
-
+		
 		<p>
 			Nous n'utilisons pas de cookie, donc pour prendre le goûter c'est
 			pas ici.
@@ -37,5 +40,7 @@ import Contribution from "../components/Main/Contribution.vue";
 
 		<p>Ainsi qu'à tous ceux qui ont contribué à la rédaction des cours :</p>
 		<Contribution/>
+
+		<p>Version {{version}}</p>
 	</div>
 </template>

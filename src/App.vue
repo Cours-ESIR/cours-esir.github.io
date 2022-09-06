@@ -22,11 +22,6 @@ const items = ref([
 		route: '/search',
 		class: 'gg-search',
 	},
-	// {
-	// 	title: 'Modification',
-	// 	route: '/edit',
-	// 	class: 'gg-pen',
-	// },
 	{
 		title: 'Salles',
 		route: '/salles',
@@ -49,8 +44,6 @@ function isRequired(routeName: string): boolean {
 	return false;
 }
 
-
-
 router.afterEach((to: {path:string, meta: RouteMeta }, from: {path:string} ) => {
 	let order: { [name: string]: number } = {
 		"home":0,
@@ -65,7 +58,6 @@ router.afterEach((to: {path:string, meta: RouteMeta }, from: {path:string} ) => 
 
 	let toDepth = order[pathfrom];
   	let fromDepth = order[pathto];
-
 
 	if (fromDepth == toDepth){
 		toDepth = from.path.split('/').filter(v=>v!=="").length;
