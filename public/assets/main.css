@@ -17,6 +17,7 @@
 		--text:#000000;
 		--text-reverse:#ffffff;
 		--shadow:rgba(0, 0, 0, 0.1);
+		--back-quote:rgb(255, 255, 224);
 	}
 }
 
@@ -27,6 +28,7 @@
 		--text:#ffffff;
 		--text-reverse:#000000;
 		--shadow:rgba(0, 0, 0, 0.3);
+		--back-quote:rgb(50, 40, 20);
 	}
 }
 
@@ -190,6 +192,7 @@ main.cours blockquote {
 	padding: 0 15px;
 	border-radius: 0 0.75em 0.75em 0;
 	color:var(--yellow) !important;
+	background-color: var(--back-quote);
 }
 
 red {
