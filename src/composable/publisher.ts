@@ -2,7 +2,6 @@ import { reactive } from "vue";
 
 let folderSelected = reactive([""])
 
-
 async function create_fork(repo:string,token:string) {
 	let fet = await fetch("https://api.github.com/repos/"+repo+"/forks",{method:"POST",headers:{"Authorization":"token " + token}})
 	return await fet.json()
@@ -94,10 +93,8 @@ async function get_login(token:string){
 let repo_own = "Cours-ESIR"
 let repo_name = "Cours"
 let repo = repo_own + "/" + repo_name
-let msg = "Changement"
-let title  = "Changement"
 
-async function upload(token:string,content:string,path:string) {
+async function upload(token:string,content:string,path:string,title:string,description:string) {
 
 	// l'utilisateur
 	let login = await get_login(token)
@@ -122,53 +119,18 @@ async function upload(token:string,content:string,path:string) {
 	let check = await check_file(login_repo,path)
 
 	if ( check==false ){
-		await create_file(login_repo,token,path,msg,content)
+		await create_file(login_repo,token,path,description,content)
 	}
 	else {
-		await modif_file(login_repo,token,path,msg,content,check)
+		await modif_file(login_repo,token,path,description,content,check)
 	}
 
 	await pull_req( repo,token,title,body,login )
-}
-
-async function unlock(token:string,path:string,locked:boolean){
-	let private_repo = repo_own + "/" + repo_name
-	let public_repo = repo_own + "/" + "Cours-en-Attente"
-
-	let input_repo = (locked) ? private_repo : public_repo
-	let output_repo = (locked) ? public_repo : private_repo
-
-	let content = await get_content(input_repo,path,msg,token)
-
-	let nfile = await create_file(output_repo,token,path,msg,content)
-	let ofile = await delete_file(input_repo,token,path,msg)
-	console.log(ofile)
-}
-
-let list_changed = reactive([
-
-])
-
-function save(token:string) {
-	for ( let event in list_changed){
-		let value = list_changed[event].value
-		if (list_changed[event]["action"] == "lock"){
-			unlock(token,event+'.md',value)
-		}
-		else if (list_changed[event]["action"] == "delete"){
-			delete_file(repo,token,event+'.md','deleting')
-		}
-		else if (list_changed[event]["action"] == "add"){
-			
-		}
-	}
 }
 
 export default function () {
 	return {
 		folderSelected,
 		upload,
-		list_changed,
-		save
 	};
 }

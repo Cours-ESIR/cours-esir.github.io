@@ -52,18 +52,17 @@ let load = (async() => {
 			});
 			if (exists) {
 				currentNode = exists;
-			} else {
-				if (
-					path.indexOf(part) < path.length - 1 ||
-					item.type === 'tree'
-				) {
+			} 
+			else {
+				if ( path.indexOf(part) < path.length - 1 || item.type === 'tree' ) {
 					// the current part is a folder
 					currentNode.children.push({
 						name: part,
 						kind: ItemKind.folder,
 						children: [],
 					});
-				} else {
+				} 
+				else {
 					// the current part is a file
 					currentNode.children.push({
 						name: part.split('.')[0], // remove extension for the name
@@ -72,8 +71,7 @@ let load = (async() => {
 						url: `${GithubService.GITHUB_DATA_URL}/${item.path}`,
 					});
 				}
-				currentNode =
-					currentNode.children[currentNode.children.length - 1];
+				currentNode = currentNode.children[currentNode.children.length - 1];
 			}
 		}
 	}
