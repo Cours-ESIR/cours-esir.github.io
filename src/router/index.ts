@@ -39,6 +39,16 @@ const router = createRouter({
 			name: 'planning',
 			component: () => import('@/views/Planning.vue'),
 		},
+		{
+			path: '/publisher',
+			name: 'publisher1',
+			component: () => import('@/views/publisher_home.vue'),
+		},
+		{
+			path: '/publisher/:token',
+			name: 'publisher2',
+			component: () => import('@/views/publisher_view.vue'),
+		},
 	],
 });
 

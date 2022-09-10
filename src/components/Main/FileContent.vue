@@ -72,7 +72,7 @@ watch(props, async (NewProps) => {
 </script>
 
 <template>
-	<main v-html="content"></main>
+	<main class="cours" v-html="content"></main>
 </template>
 
 <style scoped>
