@@ -66,6 +66,8 @@
 
 html,body{
     all:unset;
+	font-family: Poppins;
+    color:var(--text);
 }
 
 a:link,a:visited {
@@ -83,11 +85,6 @@ html,body {
 	height:var(--vh);
 	width: 100vw;
 	overflow: hidden;
-}
-
-* {
-    font-family: Poppins;
-    color:var(--text);
 }
 
 #router > * {
@@ -151,4 +148,74 @@ table {
 	font-weight: 400 !important;
 	font-family: 'Ubuntu Mono', monospace !important;
 	font-size: large !important;
+}
+
+main.cours h1 {
+	color:var(--red);
+	font-size: 32px;
+}
+
+main.cours h2 {
+	color:var(--green);	
+	font-size: 29px;
+}
+
+main.cours h3 {
+	color:var(--blue);	
+	font-size: 26px;
+}
+
+main.cours h4 {
+	color:var(--purple);
+	font-size: 23px;
+}
+
+main.cours h5 {
+	color:var(--orange);
+	font-size: 20px;
+}
+
+main.cours h6 {
+	color:var(--lightblue);
+	font-size: 17px;
+}
+
+header, h1, h2, h3, h4, h5, h6{
+	text-decoration: underline;
+}
+
+main.cours blockquote {
+	border: 1px solid var(--yellow);
+	border-left: 7.5px solid var(--yellow);
+	padding: 0 15px;
+	border-radius: 0 0.75em 0.75em 0;
+	color:var(--yellow) !important;
+}
+
+red {
+	color:var(--red);
+}
+
+blue {
+	color:var(--blue);
+}
+
+orange {
+	color:var(--orange);
+}
+
+yellow {
+	color:var(--yellow);
+}
+
+purple {
+	color:var(--purple);
+}
+
+lightblue {
+	color:var(--lightblue);
+}
+
+green {
+	color:var(--green);
 }
