@@ -1,6 +1,6 @@
 {
   "name": "cours",
-  "version": "22w36a",
+  "version": "22w36b",
   "scripts": {
     "dev": "vite",
     "build": "run-p type-check build-only",
