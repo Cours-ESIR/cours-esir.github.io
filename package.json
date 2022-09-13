@@ -1,6 +1,6 @@
 {
   "name": "cours",
-  "version": "22w36b",
+  "version": "22w37a",
   "scripts": {
     "dev": "vite",
     "build": "run-p type-check build-only",
@@ -14,6 +14,7 @@
     "markdown-it": "^13.0.1",
     "markdown-it-emoji": "^2.0.2",
     "markdown-it-highlightjs": "^4.0.1",
+    "markdown-it-replace-link": "^1.1.0",
     "markdown-it-texmath": "^1.0.0",
     "vue": "^3.2.37",
     "vue-router": "^4.0.16"

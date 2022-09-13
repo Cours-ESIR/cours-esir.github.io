@@ -9,10 +9,22 @@ import mdhljs from 'markdown-it-highlightjs';
 import katex from 'katex';
 import mdkatex from 'markdown-it-texmath';
 import mdemoji from 'markdown-it-emoji';
+import replacelink from 'markdown-it-replace-link'
 
 const markdownit = md({
 	html: true,
-});
+	replaceLink: function (link:string, env:any) {
+		if (link.startsWith("http")){
+			return link
+		}
+		else if (link.startsWith("/")) {
+			return GithubService.GITHUB_DATA_URL + props.path.split("/").slice(0,-1).join("/") + link;
+		}
+		else {
+			return GithubService.GITHUB_DATA_URL + props.path.split("/").slice(0,-1).join("/") + "/" + link;
+		}
+    }
+}).use(replacelink);
 
 markdownit
 .use(mdhljs, {
