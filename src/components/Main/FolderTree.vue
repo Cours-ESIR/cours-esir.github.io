@@ -4,6 +4,8 @@ import { ref } from 'vue';
 import usePath from '@/composable/PathComposable';
 import useGithub from '@/composable/GithubComposable';
 import { ItemKind, type ItemData, type TreeItem } from '@/types/Tree';
+import router from "@/router"
+
 
 function getIcon(kind: ItemKind): string {
 	return kind === ItemKind.folder ? 'gg-folder' : 'gg-file';
@@ -21,6 +23,13 @@ function push(child: ItemData) {
 const globalPath = usePath();
 const github = useGithub();
 const currentNode = ref<TreeItem>(github.getNodeFromPath(globalPath.path));
+console.log(globalPath.path)
+console.log(github.getNodeFromPath(globalPath.path))
+
+if (currentNode.value === undefined){
+	router.push("/erreur/404")
+}
+
 </script>
 
 <template>

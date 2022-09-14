@@ -4,6 +4,11 @@ const router = createRouter({
 	history: createWebHashHistory(import.meta.env.BASE_URL),
 	routes: [
 		{
+			path: '/erreur/:code',
+			name: 'Erreur',
+			component: () => import('@/views/NotFound.vue'),
+		},
+		{
 			path: '/',
 			name: 'home',
 			component: () => import('@/views/HomeView.vue'),

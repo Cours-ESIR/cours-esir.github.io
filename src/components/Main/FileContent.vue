@@ -19,6 +19,9 @@ const markdownit = md({
 		else if (link.startsWith("/")) {
 			return GithubService.GITHUB_DATA_URL + props.path.split("/").slice(0,-1).join("/") + link;
 		}
+		else if (link.startsWith("#")) {
+			return "./"
+		}
 		else {
 			return GithubService.GITHUB_DATA_URL + props.path.split("/").slice(0,-1).join("/") + "/" + link;
 		}

@@ -36,7 +36,8 @@ function getNodeFromPath(path: string[]): TreeItem {
 			return el.name === part;
 		});
 	}
-	return item ?? root;
+
+	return item;
 }
 
 let load = (async() => {

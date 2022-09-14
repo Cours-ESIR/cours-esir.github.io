@@ -93,11 +93,15 @@ function invert_show() {
 
 @media screen and (max-width: 1200px) {
 	#show_btn{
-		display: none;
+		left:50%;
+		top:unset;
+		margin-left:unset;
+		transform:translate(-50%,-40px) rotate(-90deg) ;
 	}
 
 	.hide{
-		margin-left: unset;
+		margin-bottom:-80px;
+		margin-left:0px;
 	}
 
 	.menu-container {
@@ -112,5 +116,16 @@ function invert_show() {
 		width:unset;
 		flex:auto;
 	}
+}
+
+@media screen and (max-width: 540px) {
+	#show_btn{
+		display: none;
+	}
+
+	.hide{
+		margin: unset;
+	}
+
 }
 </style>
