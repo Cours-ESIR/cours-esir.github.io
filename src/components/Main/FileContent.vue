@@ -6,8 +6,7 @@ import GithubService from '@/services/GithubService';
 import md from 'markdown-it';
 import hljs from 'highlight.js'
 import mdhljs from 'markdown-it-highlightjs';
-import katex from 'katex';
-import mdkatex from 'markdown-it-texmath';
+import mk from '@iktakahiro/markdown-it-katex';
 import mdemoji from 'markdown-it-emoji';
 import replacelink from 'markdown-it-replace-link'
 
@@ -34,28 +33,24 @@ markdownit
 	inline: false,
 	hljs
 })
-.use(mdkatex, {
-	engine: katex,
-	delimiters: 'dollars',
-	outerSpace: true,
-	katexOptions: {
-		displayMode: true,
-		throwOnError: false,
-		macros: {
-			'\\(': '\\lparen',
-			'\\)': '\\rparen',
-			'\\{': '\\lbrace',
-			'\\}': '\\rbrace',
-			'\\[': '\\lbrack',
-			'\\]': '\\rbrack',
-			'\\n': '\\\\ \\ \\\\',
-			'\\vec': '\\overrightarrow{#1}',
-			'\\embrace': '\\left#2\\begin{split} #1 \\end{split}\\right#3',
-			'\\aembrace': '\\embrace{#1}{\\{}{\\}}',
-			'\\pembrace': '\\embrace{#1}{\\(}{\\)}',
-			'\\cembrace': '\\embrace{#1}{\\[}{\\]}',
-			'\\abs': '\\displaystyle\\left\\lvert{#1}\\right\\rvert',
-		}
+.use(mk, {
+	displayMode: true,
+	throwOnError: true,
+
+	macros: {
+		'\\(': '\\lparen',
+		'\\)': '\\rparen',
+		'\\{': '\\lbrace',
+		'\\}': '\\rbrace',
+		'\\[': '\\lbrack',
+		'\\]': '\\rbrack',
+		'\\n': '\\\\ \\ \\\\',
+		'\\vec': '\\overrightarrow{#1}',
+		'\\embrace': '\\left#2\\begin{split} #1 \\end{split}\\right#3',
+		'\\aembrace': '\\embrace{#1}{\\{}{\\}}',
+		'\\pembrace': '\\embrace{#1}{\\(}{\\)}',
+		'\\cembrace': '\\embrace{#1}{\\[}{\\]}',
+		'\\abs': '\\displaystyle\\left\\lvert{#1}\\right\\rvert',
 	}
 })
 .use(mdemoji)
@@ -79,6 +74,7 @@ const content = ref('');
 
 watch(props, async (NewProps) => {
 	let raw = await GithubService.fetchFileContent(NewProps.path);
+
 	content.value = markdownit.render(raw);
 });
 </script>
