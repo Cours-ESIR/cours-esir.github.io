@@ -3,9 +3,7 @@ export interface RepositoryTree {
 	url: string;
 	truncated: boolean;
 	tree: RepositoryItem[];
-}
-
-export interface RepositoryContributor {}
+};
 
 export interface RepositoryItem {
 	mode: number;
@@ -14,4 +12,16 @@ export interface RepositoryItem {
 	size: number;
 	type: 'tree' | 'blob';
 	url: string;
-}
+};
+
+export interface RepositoryContributor {
+	login: string;
+	avatar_url: string;
+	url: string;
+	type: string;
+	path: string;
+	mode: string;
+	sha: string;
+};
+
+export type Contributors = RepositoryContributor[];

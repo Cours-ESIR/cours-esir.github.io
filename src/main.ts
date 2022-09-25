@@ -1,15 +1,14 @@
 import { createApp } from 'vue';
-import router from './router/index';
-import App from './App.vue';
+import router from '@/router';
+
+import { sleep } from './types/utils';
 import useGithub from '@/composable/GithubComposable';
 
 (async() => {
 	
 	await useGithub().load;
 
-
-
-	const app = createApp(App);
+	const app = createApp(() => import('@/App.vue'));
 
 	app.use(router);
 	app.mount('#app');
@@ -22,10 +21,9 @@ import useGithub from '@/composable/GithubComposable';
 	};
 
 	window.addEventListener('resize', appResize);
-
 	appResize();
 
-	let css = [
+	const css = [
 		'https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css',
 		'https://fonts.googleapis.com/css2?family=Poppins&family=Ubuntu+Mono&display=swap',
 		'https://css.gg/all.css',
@@ -37,13 +35,9 @@ import useGithub from '@/composable/GithubComposable';
 		lib.setAttribute('rel', 'stylesheet');
 		document.querySelector('head')?.appendChild(lib);
 	}
-	
-	function sleep(ms: number) {
-		return new Promise((resolve) => setTimeout(resolve, ms));
-	}
 
-	let a = document.querySelector('#loader') as any;
-	if (a) {
+	let a = document.querySelector<HTMLElement>('#loader');
+	if (a !== null) {
 		a.style.opacity = '0';
 		await sleep(1000);
 		a.style.display = 'none';

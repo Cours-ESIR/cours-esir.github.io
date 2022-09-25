@@ -1,11 +1,6 @@
 <script lang="ts" setup>
-import router from '@/router/index';
 import usePath from '@/composable/PathComposable';
 const globalPath = usePath();
-
-function back(route: string) {
-	globalPath.stepBack(1);
-}
 
 function share() {
 	window.navigator.share({
@@ -18,7 +13,7 @@ function share() {
 
 <template>
 	<div class="topbar">
-		<a @click="back($route.path)" class="button">
+		<a @click="globalPath.stepBack(1)" class="button">
 			<i class="gg-chevron-left"></i>
 		</a>
 

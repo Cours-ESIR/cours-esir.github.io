@@ -1,6 +1,8 @@
 import { reactive } from 'vue';
 import { ItemKind, type TreeItem } from '@/types/Tree';
 import type { RepositoryTree } from '@/types/Github';
+
+import type { Contributors } from '@/types/Github';
 import GithubService from '@/services/GithubService';
 
 const root = reactive<TreeItem>({
@@ -9,25 +11,9 @@ const root = reactive<TreeItem>({
 	children: [],
 });
 
-export type contribList = {
-	path: string,
-	mode: string,
-	type: string,
-	sha: string,
-	url: string,
-	login: string,
-	avatar_url: string;
-};
-
+const contributors = reactive<Contributors>([]);
 const files = reactive<string[]>([]);
 const folders = reactive<string[]>([]);
-const contributors = reactive<{value:contribList[]}>({
-	value: []
-});
-
-function getContributors(): contribList[] {
-	return contributors.value;
-}
 
 function getNodeFromPath(path: string[]): TreeItem {
 	let item: TreeItem | undefined = root;
@@ -36,12 +22,12 @@ function getNodeFromPath(path: string[]): TreeItem {
 			return el.name === part;
 		});
 	}
-
-	return item;
+	return item ?? root;
 }
 
-let load = (async() => {
-	contributors.value = await GithubService.fetchContrib()
+async function load() {
+	contributors.push(...(await GithubService.fetchContributors()));
+
 	let data: RepositoryTree = await GithubService.fetchTree();
 	for (let item of data.tree) {
 		let currentNode = root;
@@ -76,15 +62,15 @@ let load = (async() => {
 			}
 		}
 	}
-})()
+}
 
 export default function () {
 	return {
 		root,
 		files,
 		folders,
+		contributors,
 		getNodeFromPath,
-		getContributors,
 		load,
 	};
 }
