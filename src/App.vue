@@ -82,7 +82,7 @@ router.afterEach((to: RouteLocationNormalized, from: RouteLocationNormalized ) =
 	<Menu class="no-print" id="menu" :menu-items="items"></Menu>
 </template>
 
-<style scoped>
+<style>
 
 .slideL-enter-active,.slideR-enter-active{
 	transition: opacity 0.5s,transform 0.5s;

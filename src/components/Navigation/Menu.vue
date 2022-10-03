@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import {ref} from 'vue'
 
 type MenuItem = {
 	title: string;
@@ -11,17 +10,14 @@ defineProps<{
 	menuItems: MenuItem[];
 }>();
 
-let show = false
+let show = false;
 
 function invert_show() {
-	show=!show
+	show=!show;
+	let menu_classes = document.querySelector(".menu-container")?.classList;
 
-	if (show) {
-		document.querySelector(".menu-container")?.classList.add("hide")
-	}
-	else  {
-		document.querySelector(".menu-container")?.classList.remove("hide")
-	}
+	if (show) menu_classes?.add("hide");
+	else menu_classes?.remove("hide");
 }
 
 </script>
