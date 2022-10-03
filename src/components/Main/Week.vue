@@ -1,35 +1,32 @@
-<script setup lang="ts">
+<script lang="ts" setup>
  
-type event = {
-    start:number,
-    end:number
-}[][];
+ import type { event } from '@/types/Planning';
 
-let props = defineProps<{
-	planning: event;
+defineProps<{
+	planning: event[][];
 }>();
 
-let hours : number[] = [
+const hours : number[] = [
     7,8,9,10,11,12,13,14,15,16,17,18,19
 ];
 
 let last = hours.at(-1) || 24;
 
-document.documentElement.style.setProperty(
-	'--hours',
-	`${last-hours[0]}`
-);
+document.documentElement.style.setProperty('--hours', `${last-hours[0]}`);
 
 
-function get_time(timestamp:number) : number{
+function get_time(timestamp: number) : number{
     let date = new Date(timestamp)
 
     return date.getHours() + date.getMinutes() / 60
 }
 
-function show_popup(text:string){
-    document.querySelector("#popup > button").focus()
-    document.querySelector("#popup > content").innerHTML = text
+function show_popup(text: string){
+    const button = document.querySelector<HTMLButtonElement>("#popup > button");
+    const content = document.querySelector("#popup > content");
+    
+    if(button !== null) button.focus();
+    if(content) content.innerHTML = text;
 }
 
 </script>

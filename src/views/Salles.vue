@@ -1,6 +1,9 @@
 <script lang="ts" setup>
 import { onMounted, ref } from 'vue';
+
+import type { SalleInfo } from '@/types/Salles';
 import sallesComposable from '@/composable/sallesComposable';
+
 function format(num: number) {
 	let str = `${num}`;
 	if (str.length === 1) {
@@ -8,18 +11,18 @@ function format(num: number) {
 	}
 	return str;
 }
-let ndate = new Date();
-let year = ndate.getFullYear();
-let month = format(ndate.getMonth() + 1);
-let day = format(ndate.getDate());
-let hour = format(ndate.getHours());
-let minute = format(ndate.getMinutes());
+
+let now = new Date();
+let year = now.getFullYear();
+let month = format(now.getMonth() + 1);
+let day = format(now.getDate());
+let hour = format(now.getHours());
+let minute = format(now.getMinutes());
+
 let date = ref(year + '-' + month + '-' + day);
 let time = ref(hour + ':' + minute);
-type ClassRecord = {
-	[name: string]: { class: string , time?: number };
-};
-let salles = ref<ClassRecord>({
+
+let salles = ref<Record<string, SalleInfo>>({
 	'amphi-l': { class: 'grey' },
 	'amphi-m': { class: 'grey' },
 	'amphi-n': { class: 'grey' },
@@ -32,34 +35,36 @@ let salles = ref<ClassRecord>({
 	'salle-103': { class: 'grey' },
 	'salle-104': { class: 'grey' },
 });
-let timestamp:number
-async function actualize() {
-	timestamp = new Date(date.value + " " + time.value).getTime();
-	let ntime:string = '&date=' + (timestamp).toString();
-	salles.value = await sallesComposable().get_salles(salles.value,ntime)
-}
-onMounted(() => {
-	actualize();
-});
-function stringify_date(time:number|undefined,classe:string) : string{
-	if (time == undefined) return "updating"
-	let date_theo = new Date(timestamp)
-	let date_time = new Date(time)
-	const tomorrow = new Date(date_theo)
-	tomorrow.setDate(tomorrow.getDate() + 1)
-	if (classe === "grey") {
+
+let selected_date: Date;
+
+function stringify_date(salle: SalleInfo) : string{
+	if (salle.time == undefined) return 'updating';
+
+	const tomorrow = new Date(selected_date);
+	tomorrow.setDate(selected_date.getDate() + 1);
+	
+	if (salle.class === 'grey') {
 		return `Indisponible`
 	}
-	else if ( date_theo.getDate() === date_time.getDate() && date_theo.getMonth() === date_time.getMonth()){
-		return `Jusqu'à ${date_time.getHours()}:${date_time.getMinutes()}`
+	else if ( selected_date.getDate() === salle.time.getDate() && selected_date.getMonth() === salle.time.getMonth()){
+		return `Jusqu'à ${salle.time.getHours()}:${salle.time.getMinutes()}`
 	}
-	else if ( tomorrow.getDate() === date_time.getDate() && tomorrow.getMonth() === date_time.getMonth()){
-		return `Jusqu'à demain ${date_time.getHours()}:${date_time.getMinutes()}`
+	else if ( tomorrow.getDate() === salle.time.getDate() && tomorrow.getMonth() === salle.time.getMonth()){
+		return `Jusqu'à demain ${salle.time.getHours()}:${salle.time.getMinutes()}`
 	}
 	else {
-		return `Jusqu'au ${date_time.getDate()}/${date_time.getMonth()+1}`
+		return `Jusqu'au ${salle.time.getDate()}/${salle.time.getMonth()+1}`
 	}
 }
+
+async function actualize() {
+	selected_date = new Date(date.value + ' ' + time.value);
+	const request = `&date=${selected_date.getTime()}`;
+	salles.value = await sallesComposable().get_salles(salles.value, request);
+}
+
+onMounted(actualize);
 </script>
 
 <template>
@@ -72,17 +77,17 @@ function stringify_date(time:number|undefined,classe:string) : string{
 		<main class="grid">
 			<template v-for="(value, name) of salles">
 				<template v-if="value.class !== 'grey'">
-					<router-link :class="value.class + ' box'" :to="'/planning/'+name+'/'+value.time">
+					<router-link :class="value.class + ' box'" :to="'/planning/'+name+'/'+value.time?.getTime()">
 						{{ name }}
 						<br>
-						{{ stringify_date(value.time,value.class) }}
+						{{ stringify_date(value) }}
 					</router-link>
 				</template>
 				<template v-else>
 					<div :class="value.class + ' box'">
 						{{ name }}
 						<br>
-						{{ stringify_date(value.time,value.class) }}
+						{{ stringify_date(value) }}
 					</div>
 				</template>
 			</template>

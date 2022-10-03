@@ -1,41 +1,27 @@
+import type { SalleInfo, SalleData } from '@/types/Salles';
 import SallesESIR from '@/services/SallesESIR';
 
-type ClassRecord = {
-	[name: string]: { class: string ,time?: number };
-};
-
-type sallesData = {
-	[salle: string]: {
-		'error': string,
-		'until': number,
-		'state': boolean
-	}
-}
-
-async function get_events(salle:string,date: string = ''): Promise<any>{
-	let data = await SallesESIR.fetchEvents(salle,date);
-
+async function get_events(salle:string, date: string = ''): Promise<any>{
+	let data = await SallesESIR.fetchEvents(salle, date);
 	return data[salle]
 }
 
-async function get_salles(salles_data: ClassRecord, date: string = ''): Promise<ClassRecord> {
-	for (let salle in salles_data){
+async function get_salles(salles_data: Record<string, SalleInfo>, date: string = ''): Promise<Record<string, SalleInfo>> {
+	const salles: Record<string, SalleData> = await SallesESIR.fetchSalles(Object.keys(salles_data), date);
 
-		if ( typeof(salle) !== "string" ) {break}
-
-		let data:sallesData = await SallesESIR.fetchSalles([salle],date)
-
-		if (data[salle]['error']) {
-			salles_data[salle]['class'] = 'grey';
-			salles_data[salle]['time'] = parseInt(date.split("=")[1])
-		} else if (data[salle]['state']) {
-			salles_data[salle]['class'] = 'green';
-			salles_data[salle]['time'] = data[salle]['until']
+	for(let name in salles) {
+		if (salles[name]['error']) {
+			salles_data[name]['class'] = 'grey';
+			salles_data[name]['time'] = new Date(parseInt(date.split("=")[1]))
+		} else if (salles[name]['state']) {
+			salles_data[name]['class'] = 'green';
+			salles_data[name]['time'] = new Date(salles[name]['until'])
 		} else {
-			salles_data[salle]['class'] = 'red';
-			salles_data[salle]['time'] = data[salle]['until']
+			salles_data[name]['class'] = 'red';
+			salles_data[name]['time'] = new Date(salles[name]['until'])
 		}
 	}
+
 	return salles_data
 }
 
