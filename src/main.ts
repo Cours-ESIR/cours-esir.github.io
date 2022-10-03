@@ -7,7 +7,7 @@ import useGithub from '@/composable/GithubComposable';
 
 (async() => {
 	
-	await useGithub().load;
+	await useGithub().load();
 
 	const app = createApp(App);
 
