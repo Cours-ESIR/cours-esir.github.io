@@ -1,4 +1,4 @@
-import type { RepositoryTree } from '@/types/Github';
+import type { RepositoryTree, Contributors } from '@/types/Github';
 
 export default class GithubService {
 	public static readonly GITHUB_API_URL =
@@ -20,7 +20,7 @@ export default class GithubService {
 		return await data.text();
 	}
 
-	public static async fetchContrib(): Promise<any> {
+	public static async fetchContributors(): Promise<Contributors> {
 		let data = await fetch(this.GITHUB_CONTRIB_URL);
 		return await data.json();
 	}

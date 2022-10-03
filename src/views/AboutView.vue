@@ -1,6 +1,5 @@
 <script lang="ts" setup>
-import Contribution from "../components/Main/Contribution.vue";
-
+import Contributors from '@/components/Main/Contributors.vue';
 import { version } from "../../package.json"
 
 </script>
@@ -39,7 +38,7 @@ import { version } from "../../package.json"
 		</ul>
 
 		<p>Ainsi qu'à tous ceux qui ont contribué à la rédaction des cours :</p>
-		<Contribution/>
+		<Contributors />
 
 		<p>Version {{version}}</p>
 	</div>

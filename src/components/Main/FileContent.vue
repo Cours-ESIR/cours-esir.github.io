@@ -8,10 +8,13 @@ import hljs from 'highlight.js'
 import mdhljs from 'markdown-it-highlightjs';
 import mk from '@iktakahiro/markdown-it-katex';
 import mdemoji from 'markdown-it-emoji';
-import replacelink from 'markdown-it-replace-link'
+import replacelink from 'markdown-it-replace-link';
+import router from '@/router';
 
 const markdownit = md({
-	html: true,
+	html: true
+})
+.use(replacelink, {
 	replaceLink: function (link:string, env:any) {
 		if (link.startsWith("http")){
 			return link
@@ -26,9 +29,7 @@ const markdownit = md({
 			return GithubService.GITHUB_DATA_URL + props.path.split("/").slice(0,-1).join("/") + "/" + link;
 		}
     }
-}).use(replacelink);
-
-markdownit
+})
 .use(mdhljs, {
 	auto: true,
 	ignoreIllegals: true,
@@ -39,7 +40,6 @@ markdownit
 .use(mk, {
 	displayMode: true,
 	throwOnError: true,
-
 	macros: {
 		'\\(': '\\lparen',
 		'\\)': '\\rparen',

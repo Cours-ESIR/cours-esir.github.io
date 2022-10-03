@@ -1,12 +1,15 @@
 <script lang="ts" setup>
 import { ref } from 'vue';
-import { RouterView, type RouteMeta } from 'vue-router';
+import router from '@/router';
+import { RouterView, type RouteLocationNormalized } from 'vue-router';
+
 import Menu from '@/components/Navigation/Menu.vue';
 import Topbar from '@/components/Header/Topbar.vue';
-import router from '@/router/index';
-import Popup from './components/Main/Popup.vue';
+import Popup from '@/components/Main/Popup.vue';
 
-const items = ref([
+import type { MenuItem } from '@/types/utils';
+
+const items = ref<MenuItem[]>([
 	{
 		title: 'Accueil',
 		route: '/',
@@ -34,27 +37,23 @@ const items = ref([
 	},
 ]);
 
-function isRequired(routeName: string): boolean {
-	let menus = ['/lessons', '/edit', '/viewer'];
-	for (let menu of menus){
-		if ( routeName.startsWith(menu) ){
-			return true
-		}
-	}
-	return false;
+function canViewFilePath(routeName: string): boolean {
+	const part1 = routeName.split('/')[1];
+	const menus = ['lessons', 'edit', 'viewer'];
+	return menus.includes(part1);
 }
 
-router.afterEach((to: {path:string, meta: RouteMeta }, from: {path:string} ) => {
-	let order: { [name: string]: number } = {
-		"home":0,
-		"lessons":1,
-		"search":2,
-		"salles":3,
-		"about":4,
+router.afterEach((to: RouteLocationNormalized, from: RouteLocationNormalized ) => {
+	const order: Record<string, number> = {
+		home: 0,
+		lessons: 1,
+		search: 2,
+		salles: 3,
+		about: 4,
 	};
 
-	let pathfrom = (from.path == "/") ? "home" : from.path.split('/')[1];
-	let pathto = (to.path == "/") ? "home" : to.path.split('/')[1];
+	const pathfrom = (from.path == "/") ? "home" : from.path.split('/')[1];
+	const pathto = (to.path == "/") ? "home" : to.path.split('/')[1];
 
 	let toDepth = order[pathfrom];
   	let fromDepth = order[pathto];
@@ -65,16 +64,14 @@ router.afterEach((to: {path:string, meta: RouteMeta }, from: {path:string} ) => 
 	}
 
   	to.meta.transitionName = toDepth < fromDepth ? 'slideR' : 'slideL';
-})
-
+});
 </script>
 
 <template>
 	<Popup id="popup"></Popup>
 	<div id="content">
 		<router-view v-slot="{ Component, route }">
-
-			<Topbar id="topbar" v-if="isRequired($route.path)" class="no-print" />
+			<Topbar id="topbar" v-if="canViewFilePath($route.path)" class="no-print" />
 			<div id="router_par">
 				<Transition :name="route.meta.transitionName as string">
 					<component id="router" :key="$route.fullPath" :is="Component" />
@@ -85,7 +82,7 @@ router.afterEach((to: {path:string, meta: RouteMeta }, from: {path:string} ) => 
 	<Menu class="no-print" id="menu" :menu-items="items"></Menu>
 </template>
 
-<style>
+<style scoped>
 
 .slideL-enter-active,.slideR-enter-active{
 	transition: opacity 0.5s,transform 0.5s;
@@ -120,6 +117,7 @@ router.afterEach((to: {path:string, meta: RouteMeta }, from: {path:string} ) => 
 	flex-direction: column;
 }
 </style>
+
 <style>
 #router_par {
 	width: 100%;
