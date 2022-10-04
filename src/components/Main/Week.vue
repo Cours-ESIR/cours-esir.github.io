@@ -13,7 +13,7 @@ const hours : number[] = [
 let last = hours.at(-1) || 24;
 
 document.documentElement.style.setProperty('--hours', `${last-hours[0]}`);
-
+document.documentElement.style.setProperty('--days', `${5}`); // peut être la remplacer un jour par le nombre de colonnes dans `planning`
 
 function get_time(timestamp: number) : number{
     let date = new Date(timestamp)
@@ -39,15 +39,10 @@ function show_popup(text: string){
             <column>Mercredi</column>
             <column>Jeudi</column>
             <column>Vendredi</column>
-            <column>Samedi</column>
-            <column>Dimanche</column>
         </rowheader>
         <rowbody>
             <column class="events-list" v-for="day of planning">
-                
-                <div @click="show_popup(event.description.replaceAll('\\n','<br>'))"  v-for="event of day" :style="{'font-size':'8px',top:`calc( 50px *${get_time(event.start)-hours[0]})`,height: `calc( 50px *${get_time(event.end)-get_time(event.start)})`}">
-
-                </div>
+                <div @click="show_popup(event.description.replaceAll('\\n','<br>'))"  v-for="event of day" :style="{'font-size':'8px',top:`calc( 50px *${get_time(event.start)-hours[0]})`,height: `calc( 50px *${get_time(event.end)-get_time(event.start)})`}"></div>
             </column>
         </rowbody>
         <row-legend>
@@ -74,7 +69,7 @@ function show_popup(text: string){
         height: auto;
         display: grid;
         grid-auto-flow: column;
-        grid-template-columns: repeat(7, 1fr);
+        grid-template-columns: repeat(--days, 1fr);
     }
 
     div-planning > rowheader{
