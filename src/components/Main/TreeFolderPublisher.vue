@@ -1,16 +1,15 @@
 <script setup lang="ts">
-    import publisher from '@/composable/publisher.ts'
-    import {reactive} from 'vue'
+    import publisher from '@/composable/publisher'
     
+    type noeud = {kind:number,display:boolean,name:string,children:noeud}
+
     const props = defineProps<{
-        content;
+        content:noeud[];
         parent:string;
     }>();
 
     function change(name:string){
-        console.log(publisher().folderSelected)
         publisher().folderSelected[0] = name
-        console.log(publisher().folderSelected)
     }
     
 </script>

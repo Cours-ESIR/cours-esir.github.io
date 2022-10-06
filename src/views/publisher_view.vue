@@ -3,7 +3,7 @@
     import Github from '@/composable/GithubComposable';
     import router from '@/router'
     import TreeFolderPublisher from '@/components/Main/TreeFolderPublisher.vue';
-    import publisher from '@/composable/publisher.ts'
+    import publisher from '@/composable/publisher'
 
     let folder = publisher().folderSelected
     let filename = ref("")
@@ -18,13 +18,13 @@
         const reader = new FileReader();
 
         reader.addEventListener('load', (event) => {
-            let content = event.target.result
+            let content = event.target?.result
 
             let path = folder[0] + "/" + filename.value + ".md"
             
             publisher().upload(token.value,content,path,title.value,description.value)
         });
-        reader.readAsText(file.files[0]);
+        reader.readAsText(file?.files[0]);
     }
 </script>
 
