@@ -6,10 +6,9 @@ import GithubService from '@/services/GithubService';
 import md from 'markdown-it';
 import hljs from 'highlight.js'
 import mdhljs from 'markdown-it-highlightjs';
-import mk from '@iktakahiro/markdown-it-katex';
+import mk from 'markdown-it-katex';
 import mdemoji from 'markdown-it-emoji';
 import replacelink from 'markdown-it-replace-link';
-import router from '@/router';
 
 const markdownit = md({
 	html: true
