@@ -21,8 +21,9 @@
             let content = event.target?.result
 
             let path = folder[0] + "/" + filename.value + ".md"
-            
-            publisher().upload(token.value,content,path,title.value,description.value)
+            if (content !== null && content !== undefined) {
+                publisher().upload(token.value.toString(),content.toString(),path,title.value,description.value)
+            }
         });
         reader.readAsText(file?.files[0]);
     }
