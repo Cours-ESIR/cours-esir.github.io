@@ -10,8 +10,8 @@ jobs:
         name: Checkout
         uses: actions/checkout@v3
       -
-        name: Build App
-        run: ls
+        name: Install Depedencies
+        run: npm install
       -
         name: Build App
         run: npm run build
