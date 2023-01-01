@@ -11,10 +11,10 @@
     let title = ref("")
     let description = ref("")
 
-    let liste = ref( Github().root["children"] );
+    let liste:any = ref( Github().root["children"] );
 
     function send(){
-        let file = document.querySelector("#file")
+        let file:any = document.querySelector("#file")
         const reader = new FileReader();
 
         reader.addEventListener('load', (event) => {

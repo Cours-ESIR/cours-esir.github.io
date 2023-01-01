@@ -1,11 +1,11 @@
 <script setup lang="ts">
     import publisher from '@/composable/publisher'
     
-    type noeud = {kind:number,display:boolean,name:string,children:noeud}
+    type noeud = {kind:number,display:boolean,name:string,children:noeud[]}
 
     const props = defineProps<{
-        content:noeud[];
-        parent:string;
+        content: noeud[];
+        parent: string;
     }>();
 
     function change(name:string){
