@@ -23,17 +23,17 @@ let date = ref(year + '-' + month + '-' + day);
 let time = ref(hour + ':' + minute);
 
 let salles = ref<Record<string, SalleInfo>>({
-	'amphi-l': { class: 'grey' },
-	'amphi-m': { class: 'grey' },
-	'amphi-n': { class: 'grey' },
-	'salle-001': { class: 'grey' },
-	'salle-002': { class: 'grey' },
-	'salle-003': { class: 'grey' },
-	'salle-004': { class: 'grey' },
-	'salle-101': { class: 'grey' },
-	'salle-102': { class: 'grey' },
-	'salle-103': { class: 'grey' },
-	'salle-104': { class: 'grey' },
+	'b42_amphi_l': { class: 'grey' },
+	'b42_amphi_m': { class: 'grey' },
+	'b42_amphi_n': { class: 'grey' },
+	'b41_salle_001': { class: 'grey' },
+	'b41_salle_002': { class: 'grey' },
+	'b41_salle_003': { class: 'grey' },
+	'b41_salle_004': { class: 'grey' },
+	'b41_salle_101': { class: 'grey' },
+	'b41_salle_102': { class: 'grey' },
+	'b41_salle_103': { class: 'grey' },
+	'b41_salle_104': { class: 'grey' },
 });
 
 let selected_date: Date;
