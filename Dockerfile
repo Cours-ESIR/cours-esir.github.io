@@ -7,8 +7,7 @@ COPY ./ /usr/src/app
 ENV NODE_ENV production
 ENV PORT 80
 
-RUN npm install
-RUN npm run build-only
+RUN npm install && npm run build-only
 
 EXPOSE 80
 
