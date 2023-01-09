@@ -7,12 +7,12 @@ export default class sallesESIR {
 		'https://api.github.com/repos/Cours-ESIR/Cours/contents';
 
 	public static async fetchSalles(salles:string[],ntime:string): Promise<dbArray> {
-		let data = await fetch('https://aquabx.ovh:2003?salles=' + salles.join(",") +'&type=libres' +ntime);
+		let data = await fetch('https://api-esir.aquabx.ovh/?salles=' + salles.join(",") +'&type=libres' +ntime);
 		return await data.json();
 	}
 
 	public static async fetchEvents(salle:string,ntime:string): Promise<dbArray> {
-		let data = await fetch('https://aquabx.ovh:2003?salles=' + salle +'&type=events' + ntime);
+		let data = await fetch('https://api-esir.aquabx.ovh/?salles=' + salle +'&type=events' + ntime);
 		return await data.json();
 	}
 }
