@@ -8,7 +8,7 @@
     "host": "vite --host",
     "build-only": "vite build",
     "type-check": "vue-tsc --noEmit",
-    "start": "serve -s build -l 80"
+    "start": "npm run build && serve dist -l 80"
   },
   "dependencies": {
     "markdown-it-katex": "github:aquabx/markdown-it-katex",
