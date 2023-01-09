@@ -10,5 +10,5 @@ ENV PORT 80
 RUN npm install
 
 EXPOSE 80
-CMD [ "npm", "build" ]
+CMD [ "npm", "run" , "build-only" ]
 CMD [ "npm", "start" ]
