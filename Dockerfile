@@ -11,4 +11,6 @@ RUN npm install
 
 EXPOSE 80
 CMD [ "npm", "run" , "build-only" ]
+CMD [ "pwd"]
+CMD [ "ls" ]
 CMD [ "npm", "start" ]
