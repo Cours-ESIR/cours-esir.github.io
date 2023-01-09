@@ -8,9 +8,8 @@ ENV NODE_ENV production
 ENV PORT 80
 
 RUN npm install
+RUN npm run build-only
 
 EXPOSE 80
-CMD [ "npm", "run" , "build-only" ]
-CMD [ "pwd"]
-CMD [ "ls" ]
+
 CMD [ "npm", "start" ]
