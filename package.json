@@ -1,6 +1,6 @@
 {
   "name": "cours",
-  "version": "2023.1.4",
+  "version": "2023.1.9",
   "scripts": {
     "dev": "vite",
     "build": "run-p type-check build-only",
@@ -8,7 +8,7 @@
     "host": "vite --host",
     "build-only": "vite build",
     "type-check": "vue-tsc --noEmit",
-    "start": "serve -s dist -l 80"
+    "start": "vite build && serve -s dist -l 80"
   },
   "dependencies": {
     "markdown-it-katex": "github:aquabx/markdown-it-katex",
